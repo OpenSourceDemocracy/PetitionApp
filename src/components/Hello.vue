@@ -1,33 +1,31 @@
 <!-- src/components/Hello.vue -->
 <template>
     <div>
-        <div class="greeting">Hello {{name}}{{exclamationMarks}}</div>
-        <button @click="decrement">-</button>
-        <button @click="increment">+</button>
+        <div class="greeting">Room {{name}}</div>
+        <br>
+        <div id=peers>
+          Peers Online
+          <ul>
+            <li v-for="peer in peers">
+              {{peer}}
+            </li>
+          </ul>
+        </div>
     </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import {BaseRoom} from "../room";
 
 export default Vue.extend({
-    props: ['name', 'initialEnthusiasm'],
-    data() {
-        return {
-            enthusiasm: this.initialEnthusiasm,
-        }
-    },
-    methods: {
-        increment() { this.enthusiasm++; },
-        decrement() {
-            if (this.enthusiasm > 1) {
-                this.enthusiasm--;
-            }
-        },
+    props: ['name','ipfs'],
+    data(){
+        return {room: new BaseRoom(this.name, this.ipfs)}
     },
     computed: {
-        exclamationMarks(): string {
-            return Array(this.enthusiasm + 1).join('!');
+        peers(): Array<string> {
+          return this.room.getPeers()
         }
     }
 });

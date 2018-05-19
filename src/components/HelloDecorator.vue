@@ -2,34 +2,35 @@
 <!-- This is an alternative way to define the Hello component using decorators -->
 <template>
     <div>
-        <div class="greeting">Hello {{name}}{{exclamationMarks}}</div>
-        <button @click="decrement">-</button>
-        <button @click="increment">+</button>
+        <div class="greeting">Room {{name}}</div>
+        <br>
+        <div id=peers>
+          Peers Online
+          <ul>
+            <li v-for="peer in peers">
+              {{peer}}
+            </li>
+          </ul>
+        </div>
     </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import {BaseRoom} from "../room";
 
 @Component
 export default class HelloDecorator extends Vue {
     @Prop() name!: string;
-    @Prop() initialEnthusiasm!: number;
+    @Prop() ipfs!: ipfs;
 
-    enthusiasm = this.initialEnthusiasm;
+    room = new BaseRoom(this.name, this.ipfs)
 
-    increment() {
-        this.enthusiasm++;
-    }
-    decrement() {
-        if (this.enthusiasm > 1) {
-            this.enthusiasm--;
-        }
+    get peers() {
+      return this.room.getPeers()
     }
 
-    get exclamationMarks(): string {
-        return Array(this.enthusiasm + 1).join('!');
-    }
+
 }
 </script>
 
