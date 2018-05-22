@@ -4,6 +4,8 @@
     <div>
         <div class="greeting">Room {{name}}</div>
         <br>
+        <input v-model="size" type="text"> Number of Bytes <br>
+        <button  @click="startTest">Start Test</button>
         <div id=peers>
           Peers Online
           <ul>
@@ -17,17 +19,23 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import {BaseRoom} from "../room";
+import {TestRoom} from "../room";
 
 @Component
 export default class HelloDecorator extends Vue {
     @Prop() name!: string;
     @Prop() ipfs!: ipfs;
 
-    room = new BaseRoom(this.name, this.ipfs)
+    size: number = 1000;
+
+    room = new TestRoom(this.name, this.ipfs)
 
     get peers() {
       return this.room.getPeers()
+    }
+
+    startTest(){
+      this.room.startTest(this.size)
     }
 
 

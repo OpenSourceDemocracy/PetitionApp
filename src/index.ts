@@ -1,7 +1,7 @@
 import Vue from "vue";
 import HelloComponent from "./components/Hello.vue";
 import HelloDecoratorComponent from "./components/HelloDecorator.vue";
-import {BaseRoom} from "./room";
+import {BaseRoom, TestRoom} from "./room";
 import {Ipfs} from './ipfs';
 
 let v = new Vue({

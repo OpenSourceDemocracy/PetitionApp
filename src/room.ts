@@ -31,6 +31,7 @@ class BaseRoom {
   ipfs: ipfs;
   room: any;
   roomName:string;
+  id:string = "";
   constructor(roomName: string, ipfs: ipfs){
     this.roomName = roomName
     this.ipfs = ipfs
@@ -43,6 +44,7 @@ class BaseRoom {
             message.topicIDs)))
     this.room.on("peer joined", (peer: ipfs.PeerId) => this.peerJoined(peer))
     this.room.on('peer left', (peer: ipfs.PeerId) => this.peerLeft(peer))
+
   }
 
   peerJoined(peer: ipfs.PeerId): void{
@@ -57,14 +59,15 @@ class BaseRoom {
 
   ready(): void {
     console.log("we're ready in room "+ this.roomName)
+    this.id = (this.ipfs as any)._peerInfo.id._idB58String
   }
 
   onMessage(message:any):void {
     console.log(message)
   }
 
-  broadcast(message: Message):void{
-    this.room.broadcast(message)
+  broadcast(message: any):void{
+    this.room.broadcast(JSON.stringify(message))
   }
   sendTo(peer: ipfs.PeerId, message: Message):void {
     this.room.sendTo(peer, message)
@@ -83,30 +86,63 @@ class BaseRoom {
   }
 }
 
+
 class TestMessage extends Message{
   getPayloadSize(): number {
     return this.data.length
   }
 
 
-
 }
 
 
 class TestRoom extends BaseRoom{
-  time: Date = new Date();
-  lastTime: number = 0;
+  startTime: number = 0;
   peers: Array<ipfs.PeerId>= [];
+  responses = 0;
+  payloadSize = 0;
 
-  startTest(): void {
-    this.lastTime = this.time.getTime();
-    let message = "ping"
+  constructor(roomName:string, ipfs:ipfs, master:boolean=false){
+    super(roomName, ipfs)
+    if(master){
+      this.startTest()
+    }
+  }
+
+  startTest(size:number = 1000): void {
+    this.startTime = Date.now();
+    let message = {type:"ping",payload:new Uint8Array(size)}
+    this.payloadSize = message.payload.length
     this.peers = this.getPeers()
+    this.responses = 0
+    this.broadcast(message)
 
+  }
+
+  onMessage(message:Message){
+    let data = JSON.parse(message.data.toString())
+    if (data.type === "ping"){
+      if (message.from !== this.id) {
+      let resp = {type:"pong",from:message.from}
+      this.broadcast(resp)
+      console.log("just recevied " + message)
+      console.log("sent " + resp)
+    }else{
+      this.payloadSize = message.data.length
+    }
+    }else if (data.type === "pong"
+          && message.from !== this.id
+          && data.from === this.id){
+      this.responses++;
+      if (this.responses === this.peers.length){
+        let totalTime = Date.now() - this.startTime
+        console.log(this.peers.length * this.payloadSize / totalTime * 1000 +" bytes / s")
+      }
+    }
   }
 }
 
 
 
 
-export {BaseRoom};
+export {BaseRoom, TestRoom};
