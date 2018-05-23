@@ -5,7 +5,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build.site": "webpack",
+    "build.tsc": "tsc -m commonjs",
+    "networkTest": "npm run build.tsc && node built/networkTest.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
