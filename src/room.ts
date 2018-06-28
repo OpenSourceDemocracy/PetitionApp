@@ -1,10 +1,11 @@
 
 
 
-// import * as IPFS from 'ipfs'
-const PubSub = require('ipfs-pubsub-room');
+// import * as ipfs from 'ipfs';
 
+import * as orbitdb from "orbit-db";
 
+// const orbitdb = require("orbit-db")
 
 class Message {
   constructor(public data: Uint8Array,
@@ -14,7 +15,7 @@ class Message {
 }
 
 interface Room {
-  ready(): void;
+  // ready(): void;
   onMessage(message: Message): void;
   broadcast(message: Message): void;
   sendTo(peer: ipfs.PeerId, message: Message): void;
@@ -32,18 +33,13 @@ class BaseRoom {
   room: any;
   roomName:string;
   id:string = "";
+  orbitdb: any;
   constructor(roomName: string, ipfs: ipfs){
     this.roomName = roomName
     this.ipfs = ipfs
-    this.room = PubSub(this.ipfs, roomName)
-    this.room.on("subscribed", ()=> this.ready())
-    this.room.on("message", (message: any) =>
-          this.onMessage(new Message(message.data,
-            message.from,
-            message.seqno,
-            message.topicIDs)))
-    this.room.on("peer joined", (peer: ipfs.PeerId) => this.peerJoined(peer))
-    this.room.on('peer left', (peer: ipfs.PeerId) => this.peerLeft(peer))
+    this.ipfs.once("ready", async()=> await this.ready())
+    // this.room.on("peer joined", (peer: ipfs.PeerId) => this.peerJoined(peer))
+    // this.room.on('peer left', (peer: ipfs.PeerId) => this.peerLeft(peer))
 
   }
 
@@ -57,9 +53,17 @@ class BaseRoom {
 
 
 
-  ready(): void {
+  async ready() {
     console.log("we're ready in room "+ this.roomName)
+    this.orbitdb = new orbitdb(this.ipfs)
+    this.room = await this.orbitdb.eventlog(this.roomName)
     this.id = (this.ipfs as any)._peerInfo.id._idB58String
+    await this.room.load()
+    this.room.events.on("replicate", (message: any) =>
+          this.onMessage(new Message(message.data,
+            message.from,
+            message.seqno,
+            message.topicIDs)))
   }
 
   onMessage(message:any):void {
@@ -67,16 +71,16 @@ class BaseRoom {
   }
 
   broadcast(message: any):void{
-    this.room.broadcast(JSON.stringify(message))
+    this.room.add(JSON.stringify(message))
   }
   sendTo(peer: ipfs.PeerId, message: Message):void {
     this.room.sendTo(peer, message)
   }
   hasPeer(peer: ipfs.PeerId): boolean{
-    return this.room.hasPeer(peer)
+    return false;//this.room.hasPeer(peer)
   }
   getPeers(): Array<ipfs.PeerId> {
-    return this.room.getPeers()
+    return [];//this.room.ipfs()
   }
   leave(): void{
     this.room.leave()
