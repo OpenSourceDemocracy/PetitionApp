@@ -1,10 +1,5 @@
-
-
-
-// import * as IPFS from 'ipfs'
-const PubSub = require('ipfs-pubsub-room');
-
-
+import * as orbitdb from 'orbit-db';
+import * as ipfs from 'ipfs';
 
 class Message {
   constructor(public data: Uint8Array,
@@ -14,14 +9,14 @@ class Message {
 }
 
 interface Room {
-  ready(): void;
+  // ready(): void;
   onMessage(message: Message): void;
   broadcast(message: Message): void;
   sendTo(peer: ipfs.PeerId, message: Message): void;
   peerJoined(peer: ipfs.PeerId): void;
   peerLeft(peer: ipfs.PeerId): void;
   hasPeer(peer: ipfs.PeerId): boolean;
-  getPeers(): Array<ipfs.PeerId>;
+  getPeers(): ipfs.PeerId[];
   leave(): void;
   onLeave(): void;
 }
@@ -31,19 +26,14 @@ class BaseRoom {
   ipfs: ipfs;
   room: any;
   roomName:string;
-  id:string = "";
+  id: string = '';
+  orbitdb: any;
   constructor(roomName: string, ipfs: ipfs){
     this.roomName = roomName
     this.ipfs = ipfs
-    this.room = PubSub(this.ipfs, roomName)
-    this.room.on("subscribed", ()=> this.ready())
-    this.room.on("message", (message: any) =>
-          this.onMessage(new Message(message.data,
-            message.from,
-            message.seqno,
-            message.topicIDs)))
-    this.room.on("peer joined", (peer: ipfs.PeerId) => this.peerJoined(peer))
-    this.room.on('peer left', (peer: ipfs.PeerId) => this.peerLeft(peer))
+    this.ipfs.once('ready', async()=> await this.ready())
+    // this.room.on('peer joined', (peer: ipfs.PeerId) => this.peerJoined(peer))
+    // this.room.on('peer left', (peer: ipfs.PeerId) => this.peerLeft(peer))
 
   }
 
@@ -57,9 +47,17 @@ class BaseRoom {
 
 
 
-  ready(): void {
-    console.log("we're ready in room "+ this.roomName)
+  async ready() {
+    console.log('we\'re ready in room '+ this.roomName)
+    this.orbitdb = new orbitdb(this.ipfs)
+    this.room = await this.orbitdb.eventlog(this.roomName, {sync:true,write:['*']});
     this.id = (this.ipfs as any)._peerInfo.id._idB58String
+    await this.room.load()
+    this.room.events.on('replicate', (message: any) =>
+          this.onMessage(new Message(message.data,
+            message.from,
+            message.seqno,
+            message.topicIDs)))
   }
 
   onMessage(message:any):void {
@@ -67,31 +65,29 @@ class BaseRoom {
   }
 
   broadcast(message: any):void{
-    this.room.broadcast(JSON.stringify(message))
+    this.room.add(JSON.stringify(message))
   }
   sendTo(peer: ipfs.PeerId, message: Message):void {
     this.room.sendTo(peer, message)
   }
   hasPeer(peer: ipfs.PeerId): boolean{
-    return this.room.hasPeer(peer)
+    return false;//this.room.hasPeer(peer)
   }
   getPeers(): Array<ipfs.PeerId> {
-    return this.room.getPeers()
+    return [];//this.room.ipfs()
   }
   leave(): void{
     this.room.leave()
   }
   onLeave(): void{
-    console.log("Left room "+this.roomName)
+    console.log('Left room '+this.roomName)
   }
 }
-
 
 class TestMessage extends Message{
   getPayloadSize(): number {
     return this.data.length
   }
-
 
 }
 
@@ -111,7 +107,7 @@ class TestRoom extends BaseRoom{
 
   startTest(size:number = 1000): void {
     this.startTime = Date.now();
-    let message = {type:"ping",payload:new Uint8Array(size)}
+    let message = {type:'ping',payload:new Uint8Array(size)}
     this.payloadSize = message.payload.length
     this.peers = this.getPeers()
     this.responses = 0
@@ -121,22 +117,22 @@ class TestRoom extends BaseRoom{
 
   onMessage(message:Message){
     let data = JSON.parse(message.data.toString())
-    if (data.type === "ping"){
+    if (data.type === 'ping'){
       if (message.from !== this.id) {
-      let resp = {type:"pong",from:message.from}
+      let resp = {type:'pong',from:message.from}
       this.broadcast(resp)
-      console.log("just recevied " + message)
-      console.log("sent " + resp)
+      console.log('just recevied ' + message)
+      console.log('sent ' + resp)
     }else{
       this.payloadSize = message.data.length
     }
-    }else if (data.type === "pong"
+    }else if (data.type === 'pong'
           && message.from !== this.id
           && data.from === this.id){
       this.responses++;
       if (this.responses === this.peers.length){
         let totalTime = Date.now() - this.startTime
-        console.log(this.peers.length * this.payloadSize / totalTime * 1000 +" bytes / s")
+        console.log(this.peers.length * this.payloadSize / totalTime * 1000 +' bytes / s')
       }
     }
   }
