@@ -1,6 +1,0 @@
-import * as orbit_db from "orbit-db"
-
-export function createOrbitDB(ipfs:ipfs, directory?:string, options?:any) {
-  return
-}
-const OrbitDB
