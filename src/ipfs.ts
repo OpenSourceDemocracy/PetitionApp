@@ -3,6 +3,7 @@ import * as ipfs from 'ipfs';
 
 
 const Ipfs = new ipfs({
+  repo: './.ipfs',
   EXPERIMENTAL: {
     pubsub: true,
   },
