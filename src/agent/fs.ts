@@ -14,7 +14,7 @@ class OrbitFS {
   datastore: any;
 
   constructor(ipfs: ipfs, directory: string, options?: any) {
-    this.mfs = mfs(ipfs)
+    this.mfs = mfs(ipfs, options)
     this.ipfs = ipfs;
     this.repo = (ipfs as any)._repo;
     this.datastore = this.repo && this.repo.datastore;
@@ -26,7 +26,6 @@ class OrbitFS {
     if (this.repo.closed) {
       await this.datastore.open()
     }
-    debugger;
     await this.datastore.put(OrbitFS.Root, buffer)
   }
 }
@@ -43,13 +42,16 @@ class OrbitFS {
 debugger;
 Ipfs.on('ready', async () => {
   let orbitfs = new OrbitFS(Ipfs, './orbit')
-  await orbitfs.mfs.rm('/test', { recursive: true });
-  await orbitfs.mfs.flush();
+  console.log(await orbitfs.mfs.stat('/'))
+  try {
+    await orbitfs.mfs.stat('/test')
+    await orbitfs.mfs.rm('/test', { recursive: true });
+  } catch (err) {  
+  }
+  await orbitfs.mfs.mkdir('/test');
   console.log( await orbitfs.mfs.stat('/'))
-  // await orbitfs.mfs.mkdir('/test');
-  await orbitfs.updateRoot('Qmf8aX5W6wboWckFvkuxXVhDSzqxSgnjGuNPfbiELCeDFF');
-  console.log(await orbitfs.mfs.ls('/'))
-  console.log(await orbitfs.mfs.stat('/')) 
+  let orbitfs2 = new OrbitFS(Ipfs, './orbit', {root:'Qmf8aX5W6wboWckFvkuxXVhDSzqxSgnjGuNPfbiELCeDFF'});
+  console.log(await orbitfs2.mfs.stat('/')) 
 })
 
 // import * as BrowserFS from 'browserfs';
