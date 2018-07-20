@@ -9,7 +9,7 @@ module.exports = {
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, './docs'),
-    publicPath: '/',
+    publicPath: './',
     filename: 'build.js'
   },
   module: {

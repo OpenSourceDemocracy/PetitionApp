@@ -53,6 +53,7 @@ Vue.use(VueRouter);
 
 const UserHome = { template: '<div>Home</div>' }
 import QRScanner from './components/QRScanner.vue';
+import Tree from './components/Tree.vue';
 // import Login from
 import App from './components/App.vue';
 
