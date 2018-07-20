@@ -62,7 +62,7 @@ const router = new VueRouter({
     { path: '/hello', component: () => import( /* webpackChunkName: "[request].vue" */ `./components/HelloRoute.vue`) },
     { path: '/qr',component: QRScanner},
     { path: '/login',component: () => import('./components/Login.vue')},
-    { path: '/', component: () => import('./components/App.vue')}
+    { path: '/', component: () => import('./components/Login.vue')}
 
   ]
 })
@@ -100,7 +100,7 @@ let router2 = new VueRouter({
 
 const app = new Vue({
   el: '#app',
-  router: router2,
+  router: router,
   render: h => h(App),
 })
 // let Home = () => import('./components/Home.vue')

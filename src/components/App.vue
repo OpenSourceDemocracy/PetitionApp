@@ -4,21 +4,6 @@
   <div>
   <v-app>
     <v-app toolbar>
-      <v-navigation-drawer permanent clipped>
-        <v-list>
-          <v-list-tile v-for="i in 3" :to="{path: '/page' + i}">
-            <v-list-tile-action>
-              <v-icon>{{ icons[i-1] }}</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>Page {{ i }}</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list>
-      </v-navigation-drawer>
-      <v-toolbar>
-        <v-toolbar-title>Toolbar</v-toolbar-title>
-      </v-toolbar>
       <main>
         <v-container fluid>
             <v-fade-transition mode="out-in">
