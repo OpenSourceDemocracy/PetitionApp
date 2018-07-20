@@ -29,7 +29,6 @@ class Eventstore<T> extends Store{
     return this.db;
   }
 
-
   add(item: T): void {
     this.db.add(item)
   }
@@ -51,7 +50,6 @@ class Eventstore<T> extends Store{
     return this.last(-1);
   }
 
-
   destroy(){
     this.db.drop();
   }
@@ -61,18 +59,18 @@ class Eventstore<T> extends Store{
 
 
 
-import { Ipfs } from '../ipfs';
-async function ready() {
-  let orbitdb = new orbit_db(Ipfs);
-  debugger;
-  let room = await orbitdb.eventlog('testlog',{sync:true,write: ['*']})
-  let id = (Ipfs as any)._peerInfo.id._idB58String
-  await room.load();
-  console.log(`loaded ${room.address.toString()}`); 
-  room.events.on('replicate', (message: any) =>
-    console.log(message));
-}
-Ipfs.once('ready', async () => await ready());
+// import { Ipfs } from '../ipfs';
+// async function ready() {
+//   let orbitdb = new orbit_db(Ipfs);
+//   debugger;
+//   let room = await orbitdb.eventlog('testlog',{sync:true,write: ['*']})
+//   let id = (Ipfs as any)._peerInfo.id._idB58String
+//   await room.load();
+//   console.log(`loaded ${room.address.toString()}`);
+//   room.events.on('replicate', (message: any) =>
+//     console.log(message));
+// }
+// Ipfs.once('ready', async () => await ready());
 
 
 // class Path {

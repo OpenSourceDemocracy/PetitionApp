@@ -1,16 +1,23 @@
 
 var path = require('path')
 var webpack = require('webpack')
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
+  node: {fs: 'empty'},
   entry: './src/index.ts',
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    path: path.resolve(__dirname, './docs'),
+    publicPath: '/',
     filename: 'build.js'
   },
   module: {
     rules: [
+      // {
+      //   test: /\.html/,
+      //   loader: 'file-loader?name=[name].[ext]',
+      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -43,9 +50,16 @@ module.exports = {
       {
         test: /\.worker\.js$/,
         use: { loader: 'worker-loader' }
+      },
+      {
+        test: /\.styl$/,
+        loader: ['style-loader', 'css-loader', 'stylus-loader']
       }
     ]
   },
+  plugins: [new HtmlWebpackPlugin({
+    template: "./src/index.html"
+  })],
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
