@@ -10,13 +10,22 @@ class Cloud {
   }
 
   static async create(directory: string, name:string, options?: any) {
+  options = Object.assign(options || {}, {directory: directory})
     let ipfs = await DefaultIpfs.create({
       repo:path.join(directory, '.ipfs')
-    })
+      });
+      debugger;
     let account = await Account.create(ipfs, options);
-    let db:any = account.orbitdb.keyvalue(name, {create:true, write:['*']});
+    let db:any = await account.orbitdb.keyvalue(name, {create:true, write:['*']});
     await db.load();
     let cloudAgent = new Cloud(account, db);
-    return account;
+    return cloudAgent;
   }
 }
+
+async function main(){
+let cloud = await Cloud.create('/mnt/spacedrive/root', 'OpenSourceDemocracy');
+debugger;
+}
+main();
+

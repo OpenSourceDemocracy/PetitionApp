@@ -69,33 +69,3 @@ const app = new Vue({
   router: router,
   render: h => h(App),
 })
-// let Home = () => import('./components/Home.vue')
-
-// const router = new VueRouter({
-//   routes: [{
-//     path: '/',
-//     component: Home
-//   },
-//   {
-//     path: '/hello',
-//     component: () => import('./components/HelloRoute.vue')
-//   }] // short for `routes: routes`
-// })
-
-// let v = new Vue({
-//   el: '#app',
-//     router
-//     // template: `
-//     // <div>
-//     //     Name: <input v-model='name' type='text'>
-//     //     <h1>Room Decorator Component</h1>
-//     //     <hello-decorator-component :name='name' :ipfs='ipfs' />
-//     //     </div>
-//     // `,
-//     // data: { name: 'testlog',
-//     //         ipfs: Ipfs,
-//     //         room: new BaseRoom('lobby', Ipfs)},
-//     // components: {
-//     //     HelloDecoratorComponent
-//     // }
-// });

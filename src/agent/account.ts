@@ -35,7 +35,7 @@ export class Account {
 
 
   constructor(ipfs: IPFS, options?: any) {
-      this.DBdirectory = options.directory || "./orbitdb";
+  this.DBdirectory = Object.assign({directory: "./orbitdb"},options).directory;
       this.contacts = [];
       this.contactsMap = new Map();
       this.posts = [];
@@ -45,14 +45,14 @@ export class Account {
   }
 
   static async create(ipfs: IPFS, options?:any) {
-      let repo = (ipfs as any)._repo;
-      let datastore = repo.datastore;
-      if (repo.closed) {
-        await datastore.open()
-      }
-      if (await datastore.has('account')) {
-         options = Object.assign(options, {peerId: await datastore.get('account')});
-      }
+  //let repo = (ipfs as any)._repo;
+      //let datastore = repo.datastore;
+      //if (repo.closed) {
+      //await datastore.open()
+	//}
+      //if (await datastore.has('account')) {
+      // options = Object.assign(options, {peerId: await datastore.get('account')});
+      //}
       return new Account(ipfs, options);
   }
 
@@ -231,4 +231,4 @@ async function test(){
   console.log(keystore.getKey(account.id));
   console.log(account.orbitdb.keystore.getKey(account.id));
 }
-test();
+// test();
