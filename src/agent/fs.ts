@@ -4,28 +4,43 @@ import * as Orbitdb from 'orbit-db';
 import * as ipfs from 'ipfs';
 let Key = require('interface-datastore').Key;
 let bs58 = require('bs58');
+import {EventStore, Store, OrbitManager} from './db';
 
 type Path = string;
 
 class OrbitFS {
   mfs: any;
-  // orbitdb: Orbitdb;
+  store: EventStore<any>;
   ipfs: ipfs;
   RootKey = new Key('/local/filesroot');
   repo: any;
   datastore: any;
   bs58 = bs58;
+  static EMPTY_DIRECTORY_HASH = 'QmUNLLsPACCz1vLxQVkXqqLX5R1X345qqfHbsf67hvA3Nn';
 
-  constructor(ipfs: ipfs, directory = './.orbit_fs', options?: any) {
-    this.mfs = mfs(ipfs, options)
+
+
+  constructor(ipfs: ipfs, store: EventStore<any>, options?: any) {
     this.ipfs = ipfs;
+    this.mfs = mfs(ipfs, {...options, root: new Key(store.address)})
     this.repo = (ipfs as any)._repo;
     this.datastore = this.repo && this.repo.datastore;
-    // this.orbitdb = new Orbitdb(ipfs, directory, options);
+    this.store = store;
+
+    this.store.events.on('ready', (dbname: string) => {
+      this.updateRoot(this.store.peek());
+    });
+    this.store.events.on('replicated',(address: string)=> {
+      this.updateRoot(this.store.peek());
+    })
   }
 
-  get Root(): string {
-    return bs58.encode(this.datastore.db.get(this.RootKey));
+  commit() {
+    this.store.add(this.Root);
+  }
+
+  async Root(): Promise<string> {
+    return (await this.stat('/')).hash;
   }
 
 
@@ -86,9 +101,12 @@ class OrbitFS {
     return this.mfs.ls(path);
   }
 
-  static async create(path='./orbit_db', options?: any){
-    let Ipfs = await DefaultIpfs.create();
-    return new OrbitFS(Ipfs, path, options);
+  static async create(orbitdb: Orbitdb, address: string, permission=['*'], options?: any){
+    let eventStore = new EventStore(await orbitdb.eventlog(address, {
+                      write: permission,
+                    }))
+    await eventStore.load();
+    return new OrbitFS(orbitdb._ipfs, eventStore, options);
     // console.log(await orbitfs.mfs.stat('/'));
     // try {
     //   await orbitfs.mfs.stat('/test');
@@ -99,7 +117,6 @@ class OrbitFS {
     // console.log(await orbitfs.mfs.stat('/'));
     // let orbitfs2 = new OrbitFS(Ipfs, './orbit', { root: 'Qmf8aX5W6wboWckFvkuxXVhDSzqxSgnjGuNPfbiELCeDFF' });
     // console.log(await orbitfs2.mfs.stat('/'));
-
   }
 }
 
@@ -116,22 +133,70 @@ export {OrbitFS}
 //   write: require('./write')
 // }
 
-function test() {
-  DefaultIpfs.create().then(async (ipfs) => {
-    let orbitfs = new OrbitFS(ipfs, './orbit')
-    console.log(await orbitfs.mfs.stat('/'))
-    try {
-      await orbitfs.mfs.stat('/test')
-      await orbitfs.mfs.rm('/test', { recursive: true });
-    } catch (err) {
-    }
-    await orbitfs.mfs.mkdir('/test');
-    console.log(await orbitfs.mfs.stat('/'))
-    let orbitfs2 = new OrbitFS(ipfs, './orbit', { root: 'Qmf8aX5W6wboWckFvkuxXVhDSzqxSgnjGuNPfbiELCeDFF' });
-    console.log(await orbitfs2.mfs.stat('/'))
-  })
-}
+async function test() {
+    // let orbitdb = await OrbitManager.createOrbit('./orbitdb')
+    // // let ipfs = await DefaultIpfs.createTemp();
+    // // let orbitdb = new Orbitdb(ipfs, './.orbitdb');
+    // // let eventStore = await orbitdb.eventlog('test')
+    // // await eventStore.load();
+    // // eventStore.add("Hello");
+    // // console.log(eventStore.get(0));
+    // let orbitdb1 = await OrbitManager.createOrbit('./orbitdb2', {temp:true});
+    // let eventStore = new EventStore(await orbitdb.eventlog('test', {write: ['*']}));
+    // let eventStore2 = new EventStore(await orbitdb1.eventlog('test', {write: ['*']}));
+    // // await eventStore.load();
+    // // await eventStore2.load();
+    // console.log(eventStore.address);
+    // console.log(eventStore2.address);
+    //
+    // eventStore.events.on('replicated', () => {
+    //   console.log(eventStore.peek());
+    // });
+    // eventStore2.events.on('replicated', () => {
+    //   console.log("event2: " + eventStore2.peek());
+    // });
+    // let i = 0;
+    //  setInterval(async () => {
+    //    console.log("added!");
+    //    eventStore.add(`hello world ${i++}`);
+    //    console.log(eventStore.peek())},
+    //             3000);
 
+    //
+    // let orbitfs = await OrbitFS.create(orbitdb, 'test');
+    // let orbitfs2 = await OrbitFS.create(orbitdb1, 'test');
+    //
+    // console.log(await orbitfs2.stat('/'));
+    // try {
+    //   await orbitfs.mfs.stat('/test')
+    //   await orbitfs.mfs.rm('/test', { recursive: true });
+    // } catch (err) {
+    // }
+    // console.log(orbitfs.store.all);
+    // await orbitfs.mkdir('/test');
+    // console.log(orbitfs.store.all);
+    // orbitfs.commit();
+    // console.log(orbitfs.store.all);
+    // console.log(await orbitfs2.ls('/'))
+    // orbitfs.updateRoot(await orbitfs.Root())
+    // console.log(await orbitfs2.stat('/'));
+    try{
+      // orbitdb._ipfs.stop();
+    }catch (err){
+
+    }
+
+    // try {
+    //   await orbitfs.mfs.stat('/test')
+    //   await orbitfs.mfs.rm('/test', { recursive: true });
+    // } catch (err) {
+    // }
+    // await orbitfs.mfs.mkdir('/test');
+    // console.log(await orbitfs.mfs.stat('/'))
+    // let orbitfs2 = new OrbitFS(ipfs, './orbit', { root: 'Qmf8aX5W6wboWckFvkuxXVhDSzqxSgnjGuNPfbiELCeDFF' });
+
+}
+test();
 // import * as BrowserFS from 'browserfs';
 // let git = require('isomorphic-git');
 

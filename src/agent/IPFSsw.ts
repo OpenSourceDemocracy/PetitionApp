@@ -17,7 +17,7 @@ self.addEventListener('install', (event:any) => {
 
 self.addEventListener('activate', async (event) => {
   console.log('activate step');
-  orbitFS = await OrbitFS.create();
+  // orbitFS = await OrbitFS.create('pictures');
   let img = await fetch('https://i.imgur.com/0PcZsy5.jpg');
   await orbitFS.write('/jwst', img.body || Buffer.from('hello world'), (err: any) => { });
   let e = (event as any);

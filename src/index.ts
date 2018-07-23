@@ -50,8 +50,6 @@ const { createProxyClient } = require('ipfs-postmsg-proxy')
 Vue.use(Vuetify);
 Vue.use(VueRouter);
 
-
-const UserHome = { template: '<div>Home</div>' }
 import QRScanner from './components/QRScanner.vue';
 import Tree from './components/Tree.vue';
 // import Login from
@@ -63,40 +61,8 @@ const router = new VueRouter({
     { path: '/qr',component: QRScanner},
     { path: '/login',component: () => import('./components/Login.vue')},
     { path: '/', component: () => import('./components/Login.vue')}
-
   ]
 })
-let component1 = {
-  template:`<div class="title">Page 1</div>`
-}
-let component2 = {
-  template:`<div class="title">Page 2</div>`
-}
-let component3 = {
-  template:`<div class="title">Page 3</div>`
-}
-
-let router2 = new VueRouter({
-  routes: [
-    {
-      path: '/page1',
-      name: 'Page 1',
-      component: component1,
-    },
-    {
-      path: '/page2',
-      name: 'Page 2',
-      component: component2,
-    },
-    {
-      path: '/page3',
-      name: 'Page Three',
-      component: component3,
-    },
-    { path: '*', redirect: '/page1' }
-  ]
-})
-
 
 const app = new Vue({
   el: '#app',

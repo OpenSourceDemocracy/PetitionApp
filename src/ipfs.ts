@@ -13,10 +13,8 @@ let repo = {
   lock: Lock
 }
 
-
-
 class DefaultIpfs {
-  static  config = {
+  static config = {
     repo: './.ipfs',
     EXPERIMENTAL: {
       pubsub: true,
@@ -31,7 +29,8 @@ class DefaultIpfs {
     },
   };
 
-  public static async create(config = DefaultIpfs.config): Promise<any> {
+  public static async create(config?:any ): Promise<any> {
+    config = Object.assign(DefaultIpfs.config, config);
     return new Promise((resolve, reject) => {
       let ipfs = new IPFS(config);
       ipfs.on('error', reject);
@@ -41,15 +40,14 @@ class DefaultIpfs {
 
   public static async createTemp(config = DefaultIpfs.config): Promise<any> {
     return new Promise((resolve, reject) => {
-      let ipfs = new IPFS({ ...config, repo: new Repo(__dirname + "/.jsipfs", repo) });
+      let ipfs = new IPFS({ ...config, repo:  DefaultIpfs.TempRepo(__dirname)});
       ipfs.on('error', reject);
       ipfs.on('ready', () => resolve(ipfs));
     });
   }
+  public static TempRepo(dirname: string) {
+    return new Repo(dirname + "/.jsipfs", repo)
+  }
 }
-
-
-
-// const Ipfs = new ipfs(IPFS_CONFIG);
 
 export {DefaultIpfs}
