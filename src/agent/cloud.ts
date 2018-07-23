@@ -4,7 +4,9 @@ import * as path from 'path';
 
 class Cloud {
   constructor(public account:Account, public db: any){
-    db.events.on('replicate')
+    db.events.on('replicate', (x: any) => {
+      console.log(`${x} added`);
+    });
   }
 
   static async create(directory: string, name:string, options?: any) {
