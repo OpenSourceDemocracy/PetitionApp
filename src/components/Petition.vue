@@ -91,7 +91,7 @@ import {
 
 import {OrbitFS} from '../agent/fs';
 
- @Component
+@Component
 export default class Petition extends Vue {
    signed = false;
    @Getter key;

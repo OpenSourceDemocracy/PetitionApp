@@ -3,7 +3,7 @@ import {OrbitFS} from '../agent/fs';
 import {PetitionProxy} from './petition';
 
 export class PetitionState {
-  constructor(public db: OrbitDB){}
+  constructor(){}
   namespaced= true;
 
   actions = {

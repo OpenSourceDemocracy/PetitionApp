@@ -26,12 +26,12 @@
                   <!-- Now, the file input that we hide. -->
                   <input type="file" @change="upload"/>
                 </label>
-                   <v-text-field v-model="password" id="password" prepend-icon="lock" name="password" label="Password" type="password"></v-text-field>
+                   <v-text-field v-model="_password" id="password" prepend-icon="lock" name="password" label="Password" type="password"></v-text-field>
                  </v-form>
                </v-card-text>
                <v-card-actions>
                  <v-spacer></v-spacer>
-                 <v-btn color="primary">Login</v-btn>
+                 <v-btn @click="login" color="primary">Login</v-btn>
                </v-card-actions>
              </v-card>
            </v-flex>
@@ -55,25 +55,22 @@ import {
 
 @Component
 export default class Login extends Vue {
+  _password = "";
   // @Prop() account!: string;
 
-  email = "" ; //TODO: Make Email type
-  password = "";
+  // email = "" ; //TODO: Make Email type
+
   file: any = null;
 
-  @State account: Account;
+  @State account;
 
 
-  login(){
+  async login(){
+    this.account.importAccount(JSON.parse(this.file.toString()), this._password);
   }
 
-  createAccount(){
-    console.log("Create Account");
-  }
-  asysc upload(e: any) {
-    let file = await OrbitFS.readFile(e.target.files[0]);
-    debugger;
-    // console.log(JSON.parse(this.))
+  async upload(e: any) {
+    this.file = await OrbitFS.readFile(e.target.files[0]);
   }
 }
 </script>

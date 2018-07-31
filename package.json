@@ -5,7 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build.site": "webpack",
+    "build.schemas":"bash ./makeSchemas.sh",
+    "build.site": "npm run build.schemas && webpack",
     "build.tsc": "tsc -m commonjs",
     "networkTest": "npm run build.tsc && node built/networkTest.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -30,6 +31,7 @@
     "orbit-db": "^0.19.8",
     "orbit-db-keystore": "git+https://github.com/OpenSourceDemocracy/orbit-db-keystore.git",
     "style-loader": "~0.21.0",
+    "url-loader": "^1.0.1",
     "v-treeview": "^0.2.1",
     "vue-compile-typescript": "0.0.1",
     "vue-style-loader": "^4.1.1",
@@ -40,12 +42,15 @@
     "vuex-typex": "^3.0.1"
   },
   "devDependencies": {
+    "@mdi/font": "^2.5.94",
     "bs58": "^4.0.1",
     "chai": "^4.1.2",
     "css-loader": "~0.28.11",
     "html-webpack-plugin": "^2.29.0",
     "interface-datastore": "^0.4.2",
     "ipfs-postmsg-proxy": "^3.0.0",
+    "maketypes": "^1.1.2",
+    "material-design-icons-iconfont": "^3.0.3",
     "serviceworkers-ware": "^0.3.2",
     "stylus": "^0.54.5",
     "stylus-loader": "~3.0.2",

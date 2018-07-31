@@ -9,8 +9,11 @@ import { DefaultIpfs } from './ipfs';
 import { Account } from './agent/account';
 import { TreeState } from './store';
 import { PetitionState } from './store';
+import { Contacts } from './store';
 
 import {OrbitFS} from './agent/fs';
+let css = require('material-design-icons-iconfont/dist/material-design-icons.css');
+let vuetiyfCSS = require('vuetify/dist/vuetify.min.css');
 
 Vue.use(Vuetify);
 Vue.use(VueRouter);
@@ -22,10 +25,12 @@ import Application from './components/Application.vue';
 const router = new VueRouter({
   routes: [
     { path: '/tree', component: () => import( /* webpackChunkName: "[request].vue" */ `./components/Tree.vue`) },
+    { path: '/tree/:key', component: () => import( /* webpackChunkName: "[request].vue" */ `./components/Tree.vue`) },
     { path: '/QRScanner', component: () => import ('./components/QRScanner.vue')},
     { path: '/login', component: () => import('./components/Login.vue')},
     { path: '/signup', component: () => import('./components/SignUp.vue')},
     { path: '/petition/', component: () => import('./components/Petition.vue')},
+    { path: '/createPetition/', component: () => import('./components/CreatePetition.vue')},
     { path: '/petition/:key', component: () => import('./components/Petition.vue')},
     { path: '/', component: () => import('./components/Home.vue')},
   ]
@@ -37,7 +42,8 @@ async function main(){
   const store = new Vuex.Store({
         modules: {
           tree: TreeState.createModule(),
-          petition: new PetitionState(account.db)
+          petition: new PetitionState(),
+          contacts: new Contacts(),
         },
         state : {
             account: account,

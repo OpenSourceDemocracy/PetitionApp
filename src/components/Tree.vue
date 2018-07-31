@@ -54,16 +54,17 @@ export default class Tree extends Vue {
   @State fs;
   @Action getFS;
   @State account;
+  @Getter key;
+
 
   get items (){
     return (this.$store as any).state.tree.tree.items;
   }
 
   created(){
-    (async () => {
-      await this.getFS(this.account.id);
-      this.$store.dispatch('tree/fetchTree', this.fs);
-    })()
+    debugger;
+      let key = this.$store.state.route.params.key || this.key;
+      this.$store.dispatch('tree/fetchTree', key);
   }
 }
 </script>

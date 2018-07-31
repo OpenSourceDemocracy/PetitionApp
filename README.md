@@ -1,3 +1,17 @@
+
+# Depetition
+This projects aims to create a decentralized petition application.  Currently most petition only require an email and a name, which allows petitions to be discredited.  Instead this app hopes to join an ecosystem of decentralized identity frameworks that aim to be self-sovereign identity (SSI), which allow people to own and control their digital identity and use it to cryptographically sign something.
+
+## Awesome dependencies
+At the core of this application is Interplanetary File System (IPFS) and Orbit-db.  IPFS is a distributed file system where the key to a file or directory is the hash of their contents also known as content based address.  This works really well for immutable content, however, any mutation changes the content's address.  Orbit-db helps to solve this problem by making a immutable "database" manifest, which contains the description of an append-only log.  Then using IPFS's pubsub feature users can synchronize on the log.
+
+IPFS also has a mutable filesystem.  Any change to the filesystem changes the root address which is tracked by the mutable filesystem.  Taking this a step further we developed OrbitFS, which uses an Orbit-db log to publish the latest root address.
+
+The Orbit-db javascript browser client generates a pair of public and private keys, which can be used a proxy for identity.  Each user's public key is the address to their orbit-db log.
+
+The organization of the application then follows a directory structure
+
+
 ## Installing
 
 I recommend [nvm](https://github.com/creationix/nvm) to install `node`/`npm`.  Currently need to use the most stable version of node to install everything.

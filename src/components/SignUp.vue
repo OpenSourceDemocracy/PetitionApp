@@ -106,17 +106,16 @@ export default class SignUp extends Vue {
     var element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
     element.setAttribute('download', filename);
-
     element.style.display = 'none';
     document.body.appendChild(element);
-
     element.click();
-
     document.body.removeChild(element);
   }
 
   async submit(){
     let exportedKey = await this.account.exportAccount(this.password);
+    exportedKey.salt = new Blob([exportedKey.salt]);
+    debugger;
     this.download("key.json", JSON.stringify(exportedKey));
   }
 

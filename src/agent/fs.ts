@@ -14,28 +14,28 @@ class OrbitFS {
   mfs: any;
   store: EventStore<any>;
   ipfs: ipfs;
-  RootKey = new Key('/');
+  RootKey = new Key('/local/filesroot');
   repo: any;
   datastore: any;
   bs58 = bs58;
   static EMPTY_DIRECTORY_HASH = 'QmUNLLsPACCz1vLxQVkXqqLX5R1X345qqfHbsf67hvA3Nn';
 
-
-
   constructor(ipfs: ipfs, store: EventStore<any>, options?: any) {
     this.ipfs = ipfs;
-    this.RootKey = new Key(store.address);
-    this.mfs = mfs(ipfs, {...options, root: this.RootKey})
+    // this.RootKey = new Key(store.address);
+    this.mfs = mfs(ipfs, {...options});
     this.repo = (ipfs as any)._repo;
     this.datastore = this.repo && this.repo.datastore;
     this.store = store;
 
-    this.store.events.on('ready', (dbname: string) => {
-      this.updateRoot(this.store.peek());
+    this.store.events.on('ready', async (dbname: string) => {
+      debugger;
+      await this.updateRoot(this.store.peek());
     });
-    this.store.events.on('replicated',(address: string)=> {
-      this.updateRoot(this.store.peek());
-    })
+    this.store.events.on('replicated',async (address: string)=> {
+      await this.updateRoot(this.store.peek());
+    });
+    store.load();
   }
 
   async commit() {
@@ -107,7 +107,7 @@ class OrbitFS {
     }else if (typeof content ==='string'){
       content = new Blob([content]);
     }
-    return this.mfs.write(path, content, {...options, cidVersion: 1});
+    return this.mfs.write(path, content, {...options, cidVersion: 0});
   }
 
   async mv(from: Path[], to: Path, options?: any) {
@@ -122,11 +122,11 @@ class OrbitFS {
     return this.mfs.ls(path);
   }
 
-  static async create(orbitdb: Orbitdb, address: string, permission=['*'], options?: any){
+  static async create(orbitdb: Orbitdb, address: string,
+                      permission=['*'], options?: any){
     let eventStore = new EventStore(await orbitdb.eventlog(address, {
                       write: permission, sync: true
                     }))
-    await eventStore.load();
     return new OrbitFS(orbitdb._ipfs, eventStore, options);
   }
 }

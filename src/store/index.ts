@@ -31,7 +31,8 @@ export  class TreeState  {
       }
     },
     actions : {
-      async fetchTree({state, commit}, fs: OrbitFS){
+      async fetchTree({state, commit, rootState}, key: string){
+        let fs = await rootState.account.getPrivateFS(key);
         let root = await TreeState.createItem("/", fs);
         commit('setTree', root);
       }
@@ -41,3 +42,4 @@ export  class TreeState  {
 }
 
 export {PetitionState} from './petitionState';
+export {Contacts} from './contacts';
