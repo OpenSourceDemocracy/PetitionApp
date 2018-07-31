@@ -9,12 +9,16 @@ IPFS also has a mutable filesystem.  Any change to the filesystem changes the ro
 
 The Orbit-db javascript browser client generates a pair of public and private keys, which can be used a proxy for identity.  Each user's public key is the address to their orbit-db log.
 
-The organization of the application then follows a directory structure
+The organization of the application then follows a directory structure, e.g. `/profile` which is a json document with data about the user.  By default it will show the user that is logged in.  Otherwise you can provide the public key of another user to see their profile, e.g. `/profile/:key`.
+
+# Other Technical Notes
+
+This project uses typescript because it provides good abstractions and static typing.  `Vue` provides a simple components framework, which makes the application more modular.  Furthermore, `Vuetify` is a style framework built on top of vue, which uses a set of pre-made components using material design.  Lastly, `Vuex` handles the state of the application.
 
 
 ## Installing
 
-I recommend [nvm](https://github.com/creationix/nvm) to install `node`/`npm`.  Currently need to use the most stable version of node to install everything.
+We recommend [nvm](https://github.com/creationix/nvm) to install `node`/`npm`.  Currently need to use the most stable version of node to install everything.
 
 `nvm install --lts`
 
@@ -32,8 +36,10 @@ Then to use open a new terminal and traverse to the project director:
 
 `alm .`
 
+However, one key drawback is that there is currently no support for `.vue` files.  `atom` has packages for it as does Visual Studio.
+
 ## Building the project
 
 This project is actually two in one.  There is a browser app and a node app.
 
-`npm run build.site`  -- builds the browser code.  
+`npm run build.site`  -- builds the browser code and places it in the docs folder.  

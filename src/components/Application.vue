@@ -7,20 +7,66 @@
   app
 >
   <v-list dense>
+    <v-list-tile v-if="!loggedin" @click="">
+      <v-list-tile-action>
+        <v-icon>settings</v-icon>
+      </v-list-tile-action>
+      <v-list-tile-content>
+        <v-list-tile-title><router-link to="/login">Login </router-link></v-list-tile-title>
+      </v-list-tile-content>
+    </v-list-tile>
+
+    <v-list-tile v-if="!loggedin" @click="">
+      <v-list-tile-action>
+        <v-icon>settings</v-icon>
+      </v-list-tile-action>
+      <v-list-tile-content>
+        <v-list-tile-title> <router-link to="/signup">Sign Up </router-link></v-list-tile-title>
+      </v-list-tile-content>
+    </v-list-tile>
+
     <v-list-tile @click="">
       <v-list-tile-action>
         <v-icon>dashboard</v-icon>
       </v-list-tile-action>
       <v-list-tile-content>
-        <v-list-tile-title>Home</v-list-tile-title>
+        <v-list-tile-title> <router-link to="/home">Home </router-link></v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
+
+    <v-list-tile @click="">
+      <v-list-tile-action>
+        <v-icon>assignment</v-icon>
+      </v-list-tile-action>
+      <v-list-tile-content>
+        <v-list-tile-title> <router-link to="/createPetition">createPetition </router-link></v-list-tile-title>
+      </v-list-tile-content>
+    </v-list-tile>
+
+    <v-list-tile @click="">
+      <v-list-tile-action>
+        <v-icon>assignment_turned_in</v-icon>
+      </v-list-tile-action>
+      <v-list-tile-content>
+        <v-list-tile-title> <router-link to="/petition">Petitions </router-link></v-list-tile-title>
+      </v-list-tile-content>
+    </v-list-tile>
+
+    <v-list-tile @click="">
+      <v-list-tile-action>
+        <v-icon>folder</v-icon>
+      </v-list-tile-action>
+      <v-list-tile-content>
+        <v-list-tile-title> <router-link to="/tree">Tree </router-link></v-list-tile-title>
+      </v-list-tile-content>
+    </v-list-tile>
+
     <v-list-tile @click="">
       <v-list-tile-action>
         <v-icon>settings</v-icon>
       </v-list-tile-action>
       <v-list-tile-content>
-        <v-list-tile-title> <router-link to="/login">Login in</router-link></v-list-tile-title>
+        <v-list-tile-title> <router-link to="/qrscan">Login </router-link></v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
   </v-list>
@@ -66,6 +112,10 @@ export default class Home extends Vue {
 
   get id(){
     return this.account.id;
+  }
+
+  get loggedin(){
+    return this.account.loggedin();
   }
   //
   // @Action
