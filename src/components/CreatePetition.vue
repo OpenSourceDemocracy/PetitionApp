@@ -76,7 +76,8 @@ export default class Petition extends Vue {
      await this.fs.write('/petitions/' + this.title, JSON.stringify({
        title: this.title,
        body: this.body
-     }), {create: true})
+     }), {create: true});
+     this.fs.commit();
 
    }
 
