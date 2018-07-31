@@ -3,7 +3,7 @@
 <!-- src/components/HelloDecorator.vue -->
 <!-- This is an alternative way to define the Hello component using decorators -->
  <template>
-   <v-app id="inspire">
+   <!-- <v-app id="inspire"> -->
      <v-content>
        <v-container fluid fill-height>
          <v-layout align-center justify-center>
@@ -15,7 +15,17 @@
                </v-toolbar>
                <v-card-text>
                  <v-form>
-                   <v-text-field v-model="email" prepend-icon="person" name="login" label="Login" type="text"></v-text-field>
+                   <!-- <v-text-field v-model="email" prepend-icon="person" name="login" label="Login" type="text"></v-text-field> -->
+                   <label class="file-select">
+    <!-- We can't use a normal button element here, as it would become the target of the label. -->
+                  <div class="select-button">
+                    <!-- Display the filename if a file has been selected. -->
+                    <span v-if="file">Selected File: {{file.name}}</span>
+                    <span v-else>Select File</span>
+                  </div>
+                  <!-- Now, the file input that we hide. -->
+                  <input type="file" @change="upload"/>
+                </label>
                    <v-text-field v-model="password" id="password" prepend-icon="lock" name="password" label="Password" type="password"></v-text-field>
                  </v-form>
                </v-card-text>
@@ -28,71 +38,62 @@
          </v-layout>
        </v-container>
      </v-content>
-   </v-app>
+   <!-- </v-app> -->
  </template>
 
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import {OrbitFS} from "../agent/fs";
+import {
+   State,
+   Getter,
+   Action,
+   Mutation,
+   namespace
+ } from 'vuex-class'
 
 @Component
 export default class Login extends Vue {
   // @Prop() account!: string;
-  constructor() {
-    super();
-    this.orbitfs = "";
-  }
-  orbitfs: OrbitFS | string;
+
   email = "" ; //TODO: Make Email type
   password = "";
-  image = "";
-  drawer: null;
+  file: any = null;
 
-  get fs() {
-    return this.orbitfs;
-  }
+  @State account: Account;
 
-  get img() {
-    // if (typeof this.orbitfs != 'string'){
-    //   (async () => {
-    //     this.image = (await (this.orbitfs as OrbitFS).read('/jwst')).toString();
-    //   })()
-    // }
-    if (this.image){
-      return this.image;
-    }
-  }
 
   login(){
-    (async () => {
-      this.orbitfs = await OrbitFS.create();
-      let orbitfs = this.orbitfs;
-      let fetched = await fetch('https://i.imgur.com/0PcZsy5.jpg');
-      let img:string ;//await fetched.arrayBuffer() || new ArrayBuffer(0);
-      let blob = await fetched.blob();
-      var reader  = new FileReader();
-
-      reader.addEventListener("loadend", async () => {
-        img = reader.result;
-        await orbitfs.write('/jwst', new Blob([img]), {create: true});
-      }, false);
-
-      if (blob) {
-        reader.readAsDataURL(blob);
-      }
-
-
-    })()
   }
-
 
   createAccount(){
     console.log("Create Account");
+  }
+  asysc upload(e: any) {
+    let file = await OrbitFS.readFile(e.target.files[0]);
+    debugger;
+    // console.log(JSON.parse(this.))
   }
 }
 </script>
 
 <style>
+.file-select > .select-button {
+  padding: 1rem;
+
+  color: white;
+  background-color: #2EA169;
+
+  border-radius: .3rem;
+
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Don't forget to hide the original file input! */
+.file-select > input[type="file"] {
+  display: none;
+}
 
 </style>

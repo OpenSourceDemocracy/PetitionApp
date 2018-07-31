@@ -8,11 +8,13 @@ import {EventStore, Store, OrbitManager} from './db';
 
 type Path = string;
 
+type Content = string | Buffer | ReadableStream | Blob | Path | ArrayBuffer;
+
 class OrbitFS {
   mfs: any;
   store: EventStore<any>;
   ipfs: ipfs;
-  RootKey = new Key('/local/filesroot');
+  RootKey = new Key('/');
   repo: any;
   datastore: any;
   bs58 = bs58;
@@ -22,7 +24,8 @@ class OrbitFS {
 
   constructor(ipfs: ipfs, store: EventStore<any>, options?: any) {
     this.ipfs = ipfs;
-    this.mfs = mfs(ipfs, {...options, root: new Key(store.address)})
+    this.RootKey = new Key(store.address);
+    this.mfs = mfs(ipfs, {...options, root: this.RootKey})
     this.repo = (ipfs as any)._repo;
     this.datastore = this.repo && this.repo.datastore;
     this.store = store;
@@ -35,8 +38,8 @@ class OrbitFS {
     })
   }
 
-  commit() {
-    this.store.add(this.Root);
+  async commit() {
+    this.store.add(await this.Root());
   }
 
   async Root(): Promise<string> {
@@ -72,6 +75,24 @@ class OrbitFS {
     return this.mfs.read(path, options);
   }
 
+  static async readFile(file: File) {
+  const temporaryFileReader = new FileReader();
+
+   return new Promise((resolve, reject) => {
+    temporaryFileReader.onerror = () => {
+      temporaryFileReader.abort();
+      reject(new DOMException("Problem parsing input file."));
+    };
+
+    temporaryFileReader.onload = () => {
+      resolve(temporaryFileReader.result);
+    };
+    temporaryFileReader.readAsText(file);
+  });
+
+
+  }
+
   async readReadableStream(path: Path, options?: any) {
     return this.mfs.ReadReadableStream(path, options);
   }
@@ -80,13 +101,13 @@ class OrbitFS {
     return this.mfs.readPullstream(path, options);
   }
 
-  async write(path: Path,
-              content: Buffer | ReadableStream | Blob | Path | ArrayBuffer,
-              options?: any) {
+  async write(path: Path, content: Content, options?: any) {
     if (content  instanceof ArrayBuffer){
       content = Buffer.from(content);
+    }else if (typeof content ==='string'){
+      content = new Blob([content]);
     }
-    return this.mfs.write(path, content, {...options, cidVersion: 0});
+    return this.mfs.write(path, content, {...options, cidVersion: 1});
   }
 
   async mv(from: Path[], to: Path, options?: any) {
@@ -103,20 +124,10 @@ class OrbitFS {
 
   static async create(orbitdb: Orbitdb, address: string, permission=['*'], options?: any){
     let eventStore = new EventStore(await orbitdb.eventlog(address, {
-                      write: permission,
+                      write: permission, sync: true
                     }))
     await eventStore.load();
     return new OrbitFS(orbitdb._ipfs, eventStore, options);
-    // console.log(await orbitfs.mfs.stat('/'));
-    // try {
-    //   await orbitfs.mfs.stat('/test');
-    //   await orbitfs.mfs.rm('/test', { recursive: true });
-    // } catch (err) {
-    // }
-    // await orbitfs.mfs.mkdir('/test');
-    // console.log(await orbitfs.mfs.stat('/'));
-    // let orbitfs2 = new OrbitFS(Ipfs, './orbit', { root: 'Qmf8aX5W6wboWckFvkuxXVhDSzqxSgnjGuNPfbiELCeDFF' });
-    // console.log(await orbitfs2.mfs.stat('/'));
   }
 }
 

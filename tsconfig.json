@@ -2,7 +2,7 @@
     "compilerOptions": {
         "outDir": "./built/",
         "sourceMap": true,
-        "strict": true,
+        /* "strict": true, */
         "module": "esnext",
         "moduleResolution": "node",
         "target": "es6",

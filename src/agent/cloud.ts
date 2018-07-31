@@ -24,8 +24,7 @@ class Cloud {
 }
 
 async function main(){
-let cloud = await Cloud.create('/mnt/spacedrive/root', 'OpenSourceDemocracy');
+let cloud = await Cloud.create('', 'OpenSourceDemocracy');
 debugger;
 }
 main();
-

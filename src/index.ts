@@ -1,71 +1,72 @@
 import Vue from 'vue';
-import HelloComponent from './components/Hello.vue';
-import HelloDecoratorComponent from './components/HelloDecorator.vue';
-import {BaseRoom, TestRoom} from './room';
-import { DefaultIpfs } from './ipfs';
-import * as Ipfs from 'ipfs';
-// import Worker from 'worker-loader!./Worker';
 import VueRouter from 'vue-router';
-import Vuetify from 'vuetify'
-import Home from './components/Home.vue';
-import HelloRoute from './components/HelloRoute.vue';
-import { OrbitFS } from './agent/fs';
-const { createProxyClient } = require('ipfs-postmsg-proxy')
+import Vuetify from 'vuetify';
+import Vuex from 'vuex';
+import { sync } from 'vuex-router-sync';
 
-// let webServiceWorker = false;
-//
-// if (webServiceWorker) {
-//   let runtime = require('serviceworker-webpack-plugin/lib/runtime');
-//   if ('serviceWorker' in navigator) {
-//     runtime.register();
-//   }
-// }
-// require('file?name=[name].[ext]!../index.html');
+import { DefaultIpfs } from './ipfs';
 
-// addEventListener('fetch', (evt) => {
-//   // Let the browser do its default thing
-//   // for non-GET requests.
-//   let event = evt as any;
-//   if (event.request.method != 'GET') return;
+import { Account } from './agent/account';
+import { TreeState } from './store';
+import { PetitionState } from './store';
 
-//   event.respondWith(async function() {
-//     const data: any = await orbitFS.read('/jwst');
-//     const headers = { status: 200, statusText: 'OK', headers: {} }
-//     return new Response(data, headers);
-//   }());
-// });
+import {OrbitFS} from './agent/fs';
 
-
-// const worker = new Worker();
-// node = createProxyClient({
-//         addListener: worker.addEventListener.bind(worker),
-//         removeListener: worker.removeEventListener.bind(worker),
-//         postMessage: (data: any) => worker.postMessage(data)
-//       })
-
-// worker.postMessage({ a: 1 });
-// worker.onmessage = (event) => {};
-
-// worker.addEventListener('message', (event) => { });
 Vue.use(Vuetify);
 Vue.use(VueRouter);
+Vue.use(Vuex);
 
-import QRScanner from './components/QRScanner.vue';
-import Tree from './components/Tree.vue';
-// import Login from
-import App from './components/App.vue';
+
+import Application from './components/Application.vue';
 
 const router = new VueRouter({
   routes: [
-    { path: '/hello', component: () => import( /* webpackChunkName: "[request].vue" */ `./components/HelloRoute.vue`) },
-    { path: '/qr',component: QRScanner},
-    { path: '/login',component: () => import('./components/Login.vue')},
-    { path: '/', component: () => import('./components/Login.vue')}
+    { path: '/tree', component: () => import( /* webpackChunkName: "[request].vue" */ `./components/Tree.vue`) },
+    { path: '/QRScanner', component: () => import ('./components/QRScanner.vue')},
+    { path: '/login', component: () => import('./components/Login.vue')},
+    { path: '/signup', component: () => import('./components/SignUp.vue')},
+    { path: '/petition/', component: () => import('./components/Petition.vue')},
+    { path: '/petition/:key', component: () => import('./components/Petition.vue')},
+    { path: '/', component: () => import('./components/Home.vue')},
   ]
-})
+});
 
-const app = new Vue({
-  el: '#app',
-  router: router,
-  render: h => h(App),
-})
+async function main(){
+  let ipfs = await DefaultIpfs.create();
+  let account = await Account.create(ipfs);
+  const store = new Vuex.Store({
+        modules: {
+          tree: TreeState.createModule(),
+          petition: new PetitionState(account.db)
+        },
+        state : {
+            account: account,
+            fs: null
+        },
+        getters : {
+            key(){ return account.publicKey},
+
+        },
+        mutations: {
+          setFS(state: any, value: any){
+            state.fs = value;
+          }
+        },
+        actions:{
+          async getFS({state, commit}, key: string){
+            commit('setFS', await state.account.getPrivateFS(key));
+          }
+        }
+});
+  const unsync = sync(store, router) // done. Returns an unsync callback fn
+
+  const app = new Vue({
+    el: '#app',
+    router,
+    store,
+    render: h => h(Application)
+  });
+  return app;
+}
+
+main();
