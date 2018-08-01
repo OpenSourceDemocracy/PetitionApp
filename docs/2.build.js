@@ -3,7 +3,21 @@ webpackJsonp([2],{
 /***/ 1592:
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var disposed = false\nfunction injectStyle (ssrContext) {\n  if (disposed) return\n  __webpack_require__(1830)\n}\nvar Component = __webpack_require__(409)(\n  /* script */\n  __webpack_require__(1824),\n  /* template */\n  __webpack_require__(1827),\n  /* styles */\n  injectStyle,\n  /* scopeId */\n  null,\n  /* moduleIdentifier (server only) */\n  null\n)\nComponent.options.__file = \"/Users/willem/typescript/TypeScript-Vue-Starter/src/components/Home.vue\"\nif (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== \"default\" && key.substr(0, 2) !== \"__\"})) {console.error(\"named exports are not supported in *.vue files.\")}\nif (Component.options.functional) {console.error(\"[vue-loader] Home.vue: functional components are not supported with templates, they should use render functions.\")}\n\n/* hot reload */\nif (false) {(function () {\n  var hotAPI = require(\"vue-hot-reload-api\")\n  hotAPI.install(require(\"vue\"), false)\n  if (!hotAPI.compatible) return\n  module.hot.accept()\n  if (!module.hot.data) {\n    hotAPI.createRecord(\"data-v-2a3db0ac\", Component.options)\n  } else {\n    hotAPI.reload(\"data-v-2a3db0ac\", Component.options)\n  }\n  module.hot.dispose(function (data) {\n    disposed = true\n  })\n})()}\n\nmodule.exports = Component.exports\n\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvY29tcG9uZW50cy9Ib21lLnZ1ZT8xMGRhIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBLDBCQUFzTjtBQUN0TjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsMEJBQXVIO0FBQ3ZIO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSwrRUFBK0Usc0RBQXNELElBQUk7QUFDekksbUNBQW1DOztBQUVuQztBQUNBLFlBQWlCO0FBQ2pCO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLEdBQUc7QUFDSDtBQUNBO0FBQ0E7QUFDQTtBQUNBLEdBQUc7QUFDSCxDQUFDOztBQUVEIiwiZmlsZSI6IjE3NjIuanMiLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgZGlzcG9zZWQgPSBmYWxzZVxuZnVuY3Rpb24gaW5qZWN0U3R5bGUgKHNzckNvbnRleHQpIHtcbiAgaWYgKGRpc3Bvc2VkKSByZXR1cm5cbiAgcmVxdWlyZShcIiEhdnVlLWxvYWRlci9ub2RlX21vZHVsZXMvdnVlLXN0eWxlLWxvYWRlciFjc3MtbG9hZGVyP3NvdXJjZU1hcCEuLi8uLi9ub2RlX21vZHVsZXMvdnVlLWxvYWRlci9saWIvc3R5bGUtY29tcGlsZXIvaW5kZXg/e1xcXCJ2dWVcXFwiOnRydWUsXFxcImlkXFxcIjpcXFwiZGF0YS12LTJhM2RiMGFjXFxcIixcXFwic2NvcGVkXFxcIjpmYWxzZSxcXFwiaGFzSW5saW5lQ29uZmlnXFxcIjpmYWxzZX0hLi4vLi4vbm9kZV9tb2R1bGVzL3Z1ZS1sb2FkZXIvbGliL3NlbGVjdG9yP3R5cGU9c3R5bGVzJmluZGV4PTAhLi9Ib21lLnZ1ZVwiKVxufVxudmFyIENvbXBvbmVudCA9IHJlcXVpcmUoXCIhLi4vLi4vbm9kZV9tb2R1bGVzL3Z1ZS1sb2FkZXIvbGliL2NvbXBvbmVudC1ub3JtYWxpemVyXCIpKFxuICAvKiBzY3JpcHQgKi9cbiAgcmVxdWlyZShcIiEhdHMtbG9hZGVyIS4uLy4uL25vZGVfbW9kdWxlcy92dWUtbG9hZGVyL2xpYi9zZWxlY3Rvcj90eXBlPXNjcmlwdCZpbmRleD0wIS4vSG9tZS52dWVcIiksXG4gIC8qIHRlbXBsYXRlICovXG4gIHJlcXVpcmUoXCIhIS4uLy4uL25vZGVfbW9kdWxlcy92dWUtbG9hZGVyL2xpYi90ZW1wbGF0ZS1jb21waWxlci9pbmRleD97XFxcImlkXFxcIjpcXFwiZGF0YS12LTJhM2RiMGFjXFxcIixcXFwiaGFzU2NvcGVkXFxcIjpmYWxzZX0hLi4vLi4vbm9kZV9tb2R1bGVzL3Z1ZS1sb2FkZXIvbGliL3NlbGVjdG9yP3R5cGU9dGVtcGxhdGUmaW5kZXg9MCEuL0hvbWUudnVlXCIpLFxuICAvKiBzdHlsZXMgKi9cbiAgaW5qZWN0U3R5bGUsXG4gIC8qIHNjb3BlSWQgKi9cbiAgbnVsbCxcbiAgLyogbW9kdWxlSWRlbnRpZmllciAoc2VydmVyIG9ubHkpICovXG4gIG51bGxcbilcbkNvbXBvbmVudC5vcHRpb25zLl9fZmlsZSA9IFwiL1VzZXJzL3dpbGxlbS90eXBlc2NyaXB0L1R5cGVTY3JpcHQtVnVlLVN0YXJ0ZXIvc3JjL2NvbXBvbmVudHMvSG9tZS52dWVcIlxuaWYgKENvbXBvbmVudC5lc01vZHVsZSAmJiBPYmplY3Qua2V5cyhDb21wb25lbnQuZXNNb2R1bGUpLnNvbWUoZnVuY3Rpb24gKGtleSkge3JldHVybiBrZXkgIT09IFwiZGVmYXVsdFwiICYmIGtleS5zdWJzdHIoMCwgMikgIT09IFwiX19cIn0pKSB7Y29uc29sZS5lcnJvcihcIm5hbWVkIGV4cG9ydHMgYXJlIG5vdCBzdXBwb3J0ZWQgaW4gKi52dWUgZmlsZXMuXCIpfVxuaWYgKENvbXBvbmVudC5vcHRpb25zLmZ1bmN0aW9uYWwpIHtjb25zb2xlLmVycm9yKFwiW3Z1ZS1sb2FkZXJdIEhvbWUudnVlOiBmdW5jdGlvbmFsIGNvbXBvbmVudHMgYXJlIG5vdCBzdXBwb3J0ZWQgd2l0aCB0ZW1wbGF0ZXMsIHRoZXkgc2hvdWxkIHVzZSByZW5kZXIgZnVuY3Rpb25zLlwiKX1cblxuLyogaG90IHJlbG9hZCAqL1xuaWYgKG1vZHVsZS5ob3QpIHsoZnVuY3Rpb24gKCkge1xuICB2YXIgaG90QVBJID0gcmVxdWlyZShcInZ1ZS1ob3QtcmVsb2FkLWFwaVwiKVxuICBob3RBUEkuaW5zdGFsbChyZXF1aXJlKFwidnVlXCIpLCBmYWxzZSlcbiAgaWYgKCFob3RBUEkuY29tcGF0aWJsZSkgcmV0dXJuXG4gIG1vZHVsZS5ob3QuYWNjZXB0KClcbiAgaWYgKCFtb2R1bGUuaG90LmRhdGEpIHtcbiAgICBob3RBUEkuY3JlYXRlUmVjb3JkKFwiZGF0YS12LTJhM2RiMGFjXCIsIENvbXBvbmVudC5vcHRpb25zKVxuICB9IGVsc2Uge1xuICAgIGhvdEFQSS5yZWxvYWQoXCJkYXRhLXYtMmEzZGIwYWNcIiwgQ29tcG9uZW50Lm9wdGlvbnMpXG4gIH1cbiAgbW9kdWxlLmhvdC5kaXNwb3NlKGZ1bmN0aW9uIChkYXRhKSB7XG4gICAgZGlzcG9zZWQgPSB0cnVlXG4gIH0pXG59KSgpfVxuXG5tb2R1bGUuZXhwb3J0cyA9IENvbXBvbmVudC5leHBvcnRzXG5cblxuXG4vLy8vLy8vLy8vLy8vLy8vLy9cbi8vIFdFQlBBQ0sgRk9PVEVSXG4vLyAuL3NyYy9jb21wb25lbnRzL0hvbWUudnVlXG4vLyBtb2R1bGUgaWQgPSAxNzYyXG4vLyBtb2R1bGUgY2h1bmtzID0gMiJdLCJzb3VyY2VSb290IjoiIn0=");
+function injectStyle (ssrContext) {
+  __webpack_require__(1779)
+}
+var Component = __webpack_require__(662)(
+  /* script */
+  __webpack_require__(1763),
+  /* template */
+  __webpack_require__(1772),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
 
 module.exports = Component.exports
 
@@ -13,29 +27,226 @@ module.exports = Component.exports
 /***/ 1648:
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(408)(true);\n// imports\n\n\n// module\nexports.push([module.i, \"\\n.greeting {\\n    font-size: 20px;\\n}\\n\", \"\", {\"version\":3,\"sources\":[\"/Users/willem/typescript/TypeScript-Vue-Starter/src/components/Home.vue?1dd24e0d\"],\"names\":[],\"mappings\":\";AAsEA;IACA,gBAAA;CACA\",\"file\":\"Home.vue\",\"sourcesContent\":[\"<!-- src/components/HelloDecorator.vue -->\\n<!-- This is an alternative way to define the Hello component using decorators -->\\n<template>\\n  <v-app>\\n  <v-navigation-drawer\\n  v-model=\\\"drawer\\\"\\n  clipped\\n  fixed\\n  app\\n>\\n  <v-list dense>\\n    <v-list-tile @click=\\\"\\\">\\n      <v-list-tile-action>\\n        <v-icon>dashboard</v-icon>\\n      </v-list-tile-action>\\n      <v-list-tile-content>\\n        <v-list-tile-title>Dashboard</v-list-tile-title>\\n      </v-list-tile-content>\\n    </v-list-tile>\\n    <v-list-tile @click=\\\"\\\">\\n      <v-list-tile-action>\\n        <v-icon>settings</v-icon>\\n      </v-list-tile-action>\\n      <v-list-tile-content>\\n        <v-list-tile-title>Settings</v-list-tile-title>\\n      </v-list-tile-content>\\n    </v-list-tile>\\n  </v-list>\\n</v-navigation-drawer>\\n<v-toolbar app fixed clipped-left>\\n  <v-toolbar-side-icon @click.stop=\\\"drawer = !drawer\\\"></v-toolbar-side-icon>\\n  <v-toolbar-title>Application</v-toolbar-title>\\n</v-toolbar>\\n<v-content>\\n  <v-container fluid fill-height>\\n    <v-layout justify-left align-left>\\n          Welcome to Open Source Demecracy's Petition App <br>\\n          {{id}}<br>\\n            <router-link to=\\\"/login\\\">Login in</router-link>\\n          </p>\\n          <router-view></router-view>\\n    </v-layout>\\n  </v-container>\\n</v-content>\\n<v-footer app fixed>\\n  <span>&copy; 2017</span>\\n</v-footer>\\n</v-app>\\n</template>\\n\\n<script lang=\\\"ts\\\">\\nimport { Vue, Component, Prop } from \\\"vue-property-decorator\\\";\\nimport {\\n  State,\\n  Getter,\\n  Action,\\n  Mutation,\\n  namespace\\n} from 'vuex-class';\\n\\n@Component\\nexport default class Home extends Vue {\\n  get id(){\\n    return this.$store.state.id;\\n  }\\n  drawer= true;\\n}\\n</script>\\n\\n<style>\\n.greeting {\\n    font-size: 20px;\\n}\\n</style>\\n\"],\"sourceRoot\":\"\"}]);\n\n// exports\n\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvY29tcG9uZW50cy9Ib21lLnZ1ZT9kYWMzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7OztBQUdBO0FBQ0Esc0NBQXVDLHNCQUFzQixHQUFHLFVBQVUsbUlBQW1JLE1BQU0sV0FBVyxxcUNBQXFxQyxJQUFJLGlOQUFpTixrRkFBa0YsdUJBQXVCLGlDQUFpQyxVQUFVLDZEQUE2RCxtQkFBbUIsdURBQXVELGFBQWEsa0NBQWtDLEtBQUssaUJBQWlCLEdBQUcsbUNBQW1DLHNCQUFzQixHQUFHLCtCQUErQjs7QUFFdGhFIiwiZmlsZSI6IjE4MjEuanMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnRzID0gbW9kdWxlLmV4cG9ydHMgPSByZXF1aXJlKFwiLi4vLi4vbm9kZV9tb2R1bGVzL2Nzcy1sb2FkZXIvbGliL2Nzcy1iYXNlLmpzXCIpKHRydWUpO1xuLy8gaW1wb3J0c1xuXG5cbi8vIG1vZHVsZVxuZXhwb3J0cy5wdXNoKFttb2R1bGUuaWQsIFwiXFxuLmdyZWV0aW5nIHtcXG4gICAgZm9udC1zaXplOiAyMHB4O1xcbn1cXG5cIiwgXCJcIiwge1widmVyc2lvblwiOjMsXCJzb3VyY2VzXCI6W1wiL1VzZXJzL3dpbGxlbS90eXBlc2NyaXB0L1R5cGVTY3JpcHQtVnVlLVN0YXJ0ZXIvc3JjL2NvbXBvbmVudHMvSG9tZS52dWU/MWRkMjRlMGRcIl0sXCJuYW1lc1wiOltdLFwibWFwcGluZ3NcIjpcIjtBQXNFQTtJQUNBLGdCQUFBO0NBQ0FcIixcImZpbGVcIjpcIkhvbWUudnVlXCIsXCJzb3VyY2VzQ29udGVudFwiOltcIjwhLS0gc3JjL2NvbXBvbmVudHMvSGVsbG9EZWNvcmF0b3IudnVlIC0tPlxcbjwhLS0gVGhpcyBpcyBhbiBhbHRlcm5hdGl2ZSB3YXkgdG8gZGVmaW5lIHRoZSBIZWxsbyBjb21wb25lbnQgdXNpbmcgZGVjb3JhdG9ycyAtLT5cXG48dGVtcGxhdGU+XFxuICA8di1hcHA+XFxuICA8di1uYXZpZ2F0aW9uLWRyYXdlclxcbiAgdi1tb2RlbD1cXFwiZHJhd2VyXFxcIlxcbiAgY2xpcHBlZFxcbiAgZml4ZWRcXG4gIGFwcFxcbj5cXG4gIDx2LWxpc3QgZGVuc2U+XFxuICAgIDx2LWxpc3QtdGlsZSBAY2xpY2s9XFxcIlxcXCI+XFxuICAgICAgPHYtbGlzdC10aWxlLWFjdGlvbj5cXG4gICAgICAgIDx2LWljb24+ZGFzaGJvYXJkPC92LWljb24+XFxuICAgICAgPC92LWxpc3QtdGlsZS1hY3Rpb24+XFxuICAgICAgPHYtbGlzdC10aWxlLWNvbnRlbnQ+XFxuICAgICAgICA8di1saXN0LXRpbGUtdGl0bGU+RGFzaGJvYXJkPC92LWxpc3QtdGlsZS10aXRsZT5cXG4gICAgICA8L3YtbGlzdC10aWxlLWNvbnRlbnQ+XFxuICAgIDwvdi1saXN0LXRpbGU+XFxuICAgIDx2LWxpc3QtdGlsZSBAY2xpY2s9XFxcIlxcXCI+XFxuICAgICAgPHYtbGlzdC10aWxlLWFjdGlvbj5cXG4gICAgICAgIDx2LWljb24+c2V0dGluZ3M8L3YtaWNvbj5cXG4gICAgICA8L3YtbGlzdC10aWxlLWFjdGlvbj5cXG4gICAgICA8di1saXN0LXRpbGUtY29udGVudD5cXG4gICAgICAgIDx2LWxpc3QtdGlsZS10aXRsZT5TZXR0aW5nczwvdi1saXN0LXRpbGUtdGl0bGU+XFxuICAgICAgPC92LWxpc3QtdGlsZS1jb250ZW50PlxcbiAgICA8L3YtbGlzdC10aWxlPlxcbiAgPC92LWxpc3Q+XFxuPC92LW5hdmlnYXRpb24tZHJhd2VyPlxcbjx2LXRvb2xiYXIgYXBwIGZpeGVkIGNsaXBwZWQtbGVmdD5cXG4gIDx2LXRvb2xiYXItc2lkZS1pY29uIEBjbGljay5zdG9wPVxcXCJkcmF3ZXIgPSAhZHJhd2VyXFxcIj48L3YtdG9vbGJhci1zaWRlLWljb24+XFxuICA8di10b29sYmFyLXRpdGxlPkFwcGxpY2F0aW9uPC92LXRvb2xiYXItdGl0bGU+XFxuPC92LXRvb2xiYXI+XFxuPHYtY29udGVudD5cXG4gIDx2LWNvbnRhaW5lciBmbHVpZCBmaWxsLWhlaWdodD5cXG4gICAgPHYtbGF5b3V0IGp1c3RpZnktbGVmdCBhbGlnbi1sZWZ0PlxcbiAgICAgICAgICBXZWxjb21lIHRvIE9wZW4gU291cmNlIERlbWVjcmFjeSdzIFBldGl0aW9uIEFwcCA8YnI+XFxuICAgICAgICAgIHt7aWR9fTxicj5cXG4gICAgICAgICAgICA8cm91dGVyLWxpbmsgdG89XFxcIi9sb2dpblxcXCI+TG9naW4gaW48L3JvdXRlci1saW5rPlxcbiAgICAgICAgICA8L3A+XFxuICAgICAgICAgIDxyb3V0ZXItdmlldz48L3JvdXRlci12aWV3PlxcbiAgICA8L3YtbGF5b3V0PlxcbiAgPC92LWNvbnRhaW5lcj5cXG48L3YtY29udGVudD5cXG48di1mb290ZXIgYXBwIGZpeGVkPlxcbiAgPHNwYW4+JmNvcHk7IDIwMTc8L3NwYW4+XFxuPC92LWZvb3Rlcj5cXG48L3YtYXBwPlxcbjwvdGVtcGxhdGU+XFxuXFxuPHNjcmlwdCBsYW5nPVxcXCJ0c1xcXCI+XFxuaW1wb3J0IHsgVnVlLCBDb21wb25lbnQsIFByb3AgfSBmcm9tIFxcXCJ2dWUtcHJvcGVydHktZGVjb3JhdG9yXFxcIjtcXG5pbXBvcnQge1xcbiAgU3RhdGUsXFxuICBHZXR0ZXIsXFxuICBBY3Rpb24sXFxuICBNdXRhdGlvbixcXG4gIG5hbWVzcGFjZVxcbn0gZnJvbSAndnVleC1jbGFzcyc7XFxuXFxuQENvbXBvbmVudFxcbmV4cG9ydCBkZWZhdWx0IGNsYXNzIEhvbWUgZXh0ZW5kcyBWdWUge1xcbiAgZ2V0IGlkKCl7XFxuICAgIHJldHVybiB0aGlzLiRzdG9yZS5zdGF0ZS5pZDtcXG4gIH1cXG4gIGRyYXdlcj0gdHJ1ZTtcXG59XFxuPC9zY3JpcHQ+XFxuXFxuPHN0eWxlPlxcbi5ncmVldGluZyB7XFxuICAgIGZvbnQtc2l6ZTogMjBweDtcXG59XFxuPC9zdHlsZT5cXG5cIl0sXCJzb3VyY2VSb290XCI6XCJcIn1dKTtcblxuLy8gZXhwb3J0c1xuXG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gLi9+L2Nzcy1sb2FkZXI/c291cmNlTWFwIS4vfi92dWUtbG9hZGVyL2xpYi9zdHlsZS1jb21waWxlcj97XCJ2dWVcIjp0cnVlLFwiaWRcIjpcImRhdGEtdi0yYTNkYjBhY1wiLFwic2NvcGVkXCI6ZmFsc2UsXCJoYXNJbmxpbmVDb25maWdcIjpmYWxzZX0hLi9+L3Z1ZS1sb2FkZXIvbGliL3NlbGVjdG9yLmpzP3R5cGU9c3R5bGVzJmluZGV4PTAhLi9zcmMvY29tcG9uZW50cy9Ib21lLnZ1ZVxuLy8gbW9kdWxlIGlkID0gMTgyMVxuLy8gbW9kdWxlIGNodW5rcyA9IDIiXSwic291cmNlUm9vdCI6IiJ9");
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var Exception_1 = __webpack_require__(1651);
+/**
+ * Custom Error class of type Exception.
+ */
+var IllegalArgumentException = /** @class */ (function (_super) {
+    __extends(IllegalArgumentException, _super);
+    function IllegalArgumentException() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return IllegalArgumentException;
+}(Exception_1.default));
+exports.default = IllegalArgumentException;
+//# sourceMappingURL=IllegalArgumentException.js.map
 
 /***/ }),
 
-/***/ 1824:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ 1649:
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("Object.defineProperty(__webpack_exports__, \"__esModule\", { value: true });\n/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_property_decorator__ = __webpack_require__(411);\nvar __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {\n    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;\n    if (typeof Reflect === \"object\" && typeof Reflect.decorate === \"function\") r = Reflect.decorate(decorators, target, key, desc);\n    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;\n    return c > 3 && r && Object.defineProperty(target, key, r), r;\n};\n\nlet Home = class Home extends __WEBPACK_IMPORTED_MODULE_0_vue_property_decorator__[\"a\" /* Vue */] {\n    constructor() {\n        super(...arguments);\n        this.drawer = true;\n    }\n    get id() {\n        return this.$store.state.id;\n    }\n};\nHome = __decorate([\n    __WEBPACK_IMPORTED_MODULE_0_vue_property_decorator__[\"b\" /* Component */]\n], Home);\n/* harmony default export */ __webpack_exports__[\"default\"] = (Home);\n\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvY29tcG9uZW50cy9Ib21lLnZ1ZT81ZDJlIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7O0FBbUQ4RDtBQVU5RCxJQUFxQixJQUFJLEdBQXpCLFVBQTBCLFNBQVEsbUVBQUc7SUFEckM7O1FBS0UsV0FBTSxHQUFFLElBQUksQ0FBQztJQUNmLENBQUM7SUFKQyxJQUFJLEVBQUU7UUFDSixPQUFPLElBQUksQ0FBQyxNQUFNLENBQUMsS0FBSyxDQUFDLEVBQUUsQ0FBQztJQUM5QixDQUFDO0NBRUY7QUFMb0IsSUFBSTtJQUR4Qix5RUFBUztHQUNXLElBQUksQ0FLeEI7K0RBTG9CLElBQUkiLCJmaWxlIjoiMTgyNC5qcyIsInNvdXJjZXNDb250ZW50IjpbIlxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cbmltcG9ydCB7IFZ1ZSwgQ29tcG9uZW50LCBQcm9wIH0gZnJvbSBcInZ1ZS1wcm9wZXJ0eS1kZWNvcmF0b3JcIjtcbmltcG9ydCB7XG4gIFN0YXRlLFxuICBHZXR0ZXIsXG4gIEFjdGlvbixcbiAgTXV0YXRpb24sXG4gIG5hbWVzcGFjZVxufSBmcm9tICd2dWV4LWNsYXNzJztcblxuQENvbXBvbmVudFxuZXhwb3J0IGRlZmF1bHQgY2xhc3MgSG9tZSBleHRlbmRzIFZ1ZSB7XG4gIGdldCBpZCgpe1xuICAgIHJldHVybiB0aGlzLiRzdG9yZS5zdGF0ZS5pZDtcbiAgfVxuICBkcmF3ZXI9IHRydWU7XG59XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gLi9+L3Z1ZS1sb2FkZXIvbGliL3NlbGVjdG9yLmpzP3R5cGU9c2NyaXB0JmluZGV4PTAhLi9zcmMvY29tcG9uZW50cy9Ib21lLnZ1ZSJdLCJzb3VyY2VSb290IjoiIn0=");
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var Exception_1 = __webpack_require__(1651);
+/**
+ * Custom Error class of type Exception.
+ */
+var NotFoundException = /** @class */ (function (_super) {
+    __extends(NotFoundException, _super);
+    function NotFoundException() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return NotFoundException;
+}(Exception_1.default));
+exports.default = NotFoundException;
+//# sourceMappingURL=NotFoundException.js.map
 
 /***/ }),
 
-/***/ 1827:
+/***/ 1650:
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;\n  return _c('v-app', [_c('v-navigation-drawer', {\n    attrs: {\n      \"clipped\": \"\",\n      \"fixed\": \"\",\n      \"app\": \"\"\n    },\n    model: {\n      value: (_vm.drawer),\n      callback: function($$v) {\n        _vm.drawer = $$v\n      },\n      expression: \"drawer\"\n    }\n  }, [_c('v-list', {\n    attrs: {\n      \"dense\": \"\"\n    }\n  }, [_c('v-list-tile', {\n    on: {\n      \"click\": function($event) {}\n    }\n  }, [_c('v-list-tile-action', [_c('v-icon', [_vm._v(\"dashboard\")])], 1), _vm._v(\" \"), _c('v-list-tile-content', [_c('v-list-tile-title', [_vm._v(\"Dashboard\")])], 1)], 1), _vm._v(\" \"), _c('v-list-tile', {\n    on: {\n      \"click\": function($event) {}\n    }\n  }, [_c('v-list-tile-action', [_c('v-icon', [_vm._v(\"settings\")])], 1), _vm._v(\" \"), _c('v-list-tile-content', [_c('v-list-tile-title', [_vm._v(\"Settings\")])], 1)], 1)], 1)], 1), _vm._v(\" \"), _c('v-toolbar', {\n    attrs: {\n      \"app\": \"\",\n      \"fixed\": \"\",\n      \"clipped-left\": \"\"\n    }\n  }, [_c('v-toolbar-side-icon', {\n    on: {\n      \"click\": function($event) {\n        $event.stopPropagation();\n        _vm.drawer = !_vm.drawer\n      }\n    }\n  }), _vm._v(\" \"), _c('v-toolbar-title', [_vm._v(\"Application\")])], 1), _vm._v(\" \"), _c('v-content', [_c('v-container', {\n    attrs: {\n      \"fluid\": \"\",\n      \"fill-height\": \"\"\n    }\n  }, [_c('v-layout', {\n    attrs: {\n      \"justify-left\": \"\",\n      \"align-left\": \"\"\n    }\n  }, [_vm._v(\"\\n          Welcome to Open Source Demecracy's Petition App \"), _c('br'), _vm._v(\"\\n          \" + _vm._s(_vm.id)), _c('br'), _vm._v(\" \"), _c('router-link', {\n    attrs: {\n      \"to\": \"/login\"\n    }\n  }, [_vm._v(\"Login in\")]), _vm._v(\" \"), _c('p'), _vm._v(\" \"), _c('router-view')], 1)], 1)], 1), _vm._v(\" \"), _c('v-footer', {\n    attrs: {\n      \"app\": \"\",\n      \"fixed\": \"\"\n    }\n  }, [_c('span', [_vm._v(\"© 2017\")])])], 1)\n},staticRenderFns: []}\nmodule.exports.render._withStripped = true\nif (false) {\n  module.hot.accept()\n  if (module.hot.data) {\n     require(\"vue-hot-reload-api\").rerender(\"data-v-2a3db0ac\", module.exports)\n  }\n}\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvY29tcG9uZW50cy9Ib21lLnZ1ZT84Nzc2Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLGdCQUFnQixtQkFBbUIsYUFBYSwwQkFBMEI7QUFDMUU7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLEtBQUs7QUFDTDtBQUNBO0FBQ0E7QUFDQTtBQUNBLE9BQU87QUFDUDtBQUNBO0FBQ0EsR0FBRztBQUNIO0FBQ0E7QUFDQTtBQUNBLEdBQUc7QUFDSDtBQUNBO0FBQ0E7QUFDQSxHQUFHO0FBQ0g7QUFDQTtBQUNBO0FBQ0EsR0FBRztBQUNIO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxHQUFHO0FBQ0g7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsR0FBRztBQUNIO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsR0FBRztBQUNIO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsR0FBRztBQUNIO0FBQ0E7QUFDQTtBQUNBLEdBQUc7QUFDSDtBQUNBO0FBQ0E7QUFDQTtBQUNBLEdBQUc7QUFDSCxDQUFDO0FBQ0Q7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EiLCJmaWxlIjoiMTgyNy5qcyIsInNvdXJjZXNDb250ZW50IjpbIm1vZHVsZS5leHBvcnRzPXtyZW5kZXI6ZnVuY3Rpb24gKCl7dmFyIF92bT10aGlzO3ZhciBfaD1fdm0uJGNyZWF0ZUVsZW1lbnQ7dmFyIF9jPV92bS5fc2VsZi5fY3x8X2g7XG4gIHJldHVybiBfYygndi1hcHAnLCBbX2MoJ3YtbmF2aWdhdGlvbi1kcmF3ZXInLCB7XG4gICAgYXR0cnM6IHtcbiAgICAgIFwiY2xpcHBlZFwiOiBcIlwiLFxuICAgICAgXCJmaXhlZFwiOiBcIlwiLFxuICAgICAgXCJhcHBcIjogXCJcIlxuICAgIH0sXG4gICAgbW9kZWw6IHtcbiAgICAgIHZhbHVlOiAoX3ZtLmRyYXdlciksXG4gICAgICBjYWxsYmFjazogZnVuY3Rpb24oJCR2KSB7XG4gICAgICAgIF92bS5kcmF3ZXIgPSAkJHZcbiAgICAgIH0sXG4gICAgICBleHByZXNzaW9uOiBcImRyYXdlclwiXG4gICAgfVxuICB9LCBbX2MoJ3YtbGlzdCcsIHtcbiAgICBhdHRyczoge1xuICAgICAgXCJkZW5zZVwiOiBcIlwiXG4gICAgfVxuICB9LCBbX2MoJ3YtbGlzdC10aWxlJywge1xuICAgIG9uOiB7XG4gICAgICBcImNsaWNrXCI6IGZ1bmN0aW9uKCRldmVudCkge31cbiAgICB9XG4gIH0sIFtfYygndi1saXN0LXRpbGUtYWN0aW9uJywgW19jKCd2LWljb24nLCBbX3ZtLl92KFwiZGFzaGJvYXJkXCIpXSldLCAxKSwgX3ZtLl92KFwiIFwiKSwgX2MoJ3YtbGlzdC10aWxlLWNvbnRlbnQnLCBbX2MoJ3YtbGlzdC10aWxlLXRpdGxlJywgW192bS5fdihcIkRhc2hib2FyZFwiKV0pXSwgMSldLCAxKSwgX3ZtLl92KFwiIFwiKSwgX2MoJ3YtbGlzdC10aWxlJywge1xuICAgIG9uOiB7XG4gICAgICBcImNsaWNrXCI6IGZ1bmN0aW9uKCRldmVudCkge31cbiAgICB9XG4gIH0sIFtfYygndi1saXN0LXRpbGUtYWN0aW9uJywgW19jKCd2LWljb24nLCBbX3ZtLl92KFwic2V0dGluZ3NcIildKV0sIDEpLCBfdm0uX3YoXCIgXCIpLCBfYygndi1saXN0LXRpbGUtY29udGVudCcsIFtfYygndi1saXN0LXRpbGUtdGl0bGUnLCBbX3ZtLl92KFwiU2V0dGluZ3NcIildKV0sIDEpXSwgMSldLCAxKV0sIDEpLCBfdm0uX3YoXCIgXCIpLCBfYygndi10b29sYmFyJywge1xuICAgIGF0dHJzOiB7XG4gICAgICBcImFwcFwiOiBcIlwiLFxuICAgICAgXCJmaXhlZFwiOiBcIlwiLFxuICAgICAgXCJjbGlwcGVkLWxlZnRcIjogXCJcIlxuICAgIH1cbiAgfSwgW19jKCd2LXRvb2xiYXItc2lkZS1pY29uJywge1xuICAgIG9uOiB7XG4gICAgICBcImNsaWNrXCI6IGZ1bmN0aW9uKCRldmVudCkge1xuICAgICAgICAkZXZlbnQuc3RvcFByb3BhZ2F0aW9uKCk7XG4gICAgICAgIF92bS5kcmF3ZXIgPSAhX3ZtLmRyYXdlclxuICAgICAgfVxuICAgIH1cbiAgfSksIF92bS5fdihcIiBcIiksIF9jKCd2LXRvb2xiYXItdGl0bGUnLCBbX3ZtLl92KFwiQXBwbGljYXRpb25cIildKV0sIDEpLCBfdm0uX3YoXCIgXCIpLCBfYygndi1jb250ZW50JywgW19jKCd2LWNvbnRhaW5lcicsIHtcbiAgICBhdHRyczoge1xuICAgICAgXCJmbHVpZFwiOiBcIlwiLFxuICAgICAgXCJmaWxsLWhlaWdodFwiOiBcIlwiXG4gICAgfVxuICB9LCBbX2MoJ3YtbGF5b3V0Jywge1xuICAgIGF0dHJzOiB7XG4gICAgICBcImp1c3RpZnktbGVmdFwiOiBcIlwiLFxuICAgICAgXCJhbGlnbi1sZWZ0XCI6IFwiXCJcbiAgICB9XG4gIH0sIFtfdm0uX3YoXCJcXG4gICAgICAgICAgV2VsY29tZSB0byBPcGVuIFNvdXJjZSBEZW1lY3JhY3kncyBQZXRpdGlvbiBBcHAgXCIpLCBfYygnYnInKSwgX3ZtLl92KFwiXFxuICAgICAgICAgIFwiICsgX3ZtLl9zKF92bS5pZCkpLCBfYygnYnInKSwgX3ZtLl92KFwiIFwiKSwgX2MoJ3JvdXRlci1saW5rJywge1xuICAgIGF0dHJzOiB7XG4gICAgICBcInRvXCI6IFwiL2xvZ2luXCJcbiAgICB9XG4gIH0sIFtfdm0uX3YoXCJMb2dpbiBpblwiKV0pLCBfdm0uX3YoXCIgXCIpLCBfYygncCcpLCBfdm0uX3YoXCIgXCIpLCBfYygncm91dGVyLXZpZXcnKV0sIDEpXSwgMSldLCAxKSwgX3ZtLl92KFwiIFwiKSwgX2MoJ3YtZm9vdGVyJywge1xuICAgIGF0dHJzOiB7XG4gICAgICBcImFwcFwiOiBcIlwiLFxuICAgICAgXCJmaXhlZFwiOiBcIlwiXG4gICAgfVxuICB9LCBbX2MoJ3NwYW4nLCBbX3ZtLl92KFwiwqkgMjAxN1wiKV0pXSldLCAxKVxufSxzdGF0aWNSZW5kZXJGbnM6IFtdfVxubW9kdWxlLmV4cG9ydHMucmVuZGVyLl93aXRoU3RyaXBwZWQgPSB0cnVlXG5pZiAobW9kdWxlLmhvdCkge1xuICBtb2R1bGUuaG90LmFjY2VwdCgpXG4gIGlmIChtb2R1bGUuaG90LmRhdGEpIHtcbiAgICAgcmVxdWlyZShcInZ1ZS1ob3QtcmVsb2FkLWFwaVwiKS5yZXJlbmRlcihcImRhdGEtdi0yYTNkYjBhY1wiLCBtb2R1bGUuZXhwb3J0cylcbiAgfVxufVxuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIC4vfi92dWUtbG9hZGVyL2xpYi90ZW1wbGF0ZS1jb21waWxlcj97XCJpZFwiOlwiZGF0YS12LTJhM2RiMGFjXCIsXCJoYXNTY29wZWRcIjpmYWxzZX0hLi9+L3Z1ZS1sb2FkZXIvbGliL3NlbGVjdG9yLmpzP3R5cGU9dGVtcGxhdGUmaW5kZXg9MCEuL3NyYy9jb21wb25lbnRzL0hvbWUudnVlXG4vLyBtb2R1bGUgaWQgPSAxODI3XG4vLyBtb2R1bGUgY2h1bmtzID0gMiJdLCJzb3VyY2VSb290IjoiIn0=");
+"use strict";
+
+/*
+ * Copyright 2007 ZXing authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+/*namespace com.google.zxing {*/
+var MathUtils_1 = __webpack_require__(1667);
+var Float_1 = __webpack_require__(1747);
+/**
+ * <p>Encapsulates a point of interest in an image containing a barcode. Typically, this
+ * would be the location of a finder pattern or the corner of the barcode, for example.</p>
+ *
+ * @author Sean Owen
+ */
+var ResultPoint = /** @class */ (function () {
+    function ResultPoint(x /*float*/, y /*float*/) {
+        this.x = x;
+        this.y = y;
+    }
+    ResultPoint.prototype.getX = function () {
+        return this.x;
+    };
+    ResultPoint.prototype.getY = function () {
+        return this.y;
+    };
+    /*@Override*/
+    ResultPoint.prototype.equals = function (other) {
+        if (other instanceof ResultPoint) {
+            var otherPoint = other;
+            return this.x === otherPoint.x && this.y === otherPoint.y;
+        }
+        return false;
+    };
+    /*@Override*/
+    ResultPoint.prototype.hashCode = function () {
+        return 31 * Float_1.default.floatToIntBits(this.x) + Float_1.default.floatToIntBits(this.y);
+    };
+    /*@Override*/
+    ResultPoint.prototype.toString = function () {
+        return '(' + this.x + ',' + this.y + ')';
+    };
+    /**
+     * Orders an array of three ResultPoints in an order [A,B,C] such that AB is less than AC
+     * and BC is less than AC, and the angle between BC and BA is less than 180 degrees.
+     *
+     * @param patterns array of three {@code ResultPoint} to order
+     */
+    ResultPoint.orderBestPatterns = function (patterns) {
+        // Find distances between pattern centers
+        var zeroOneDistance = this.distance(patterns[0], patterns[1]);
+        var oneTwoDistance = this.distance(patterns[1], patterns[2]);
+        var zeroTwoDistance = this.distance(patterns[0], patterns[2]);
+        var pointA;
+        var pointB;
+        var pointC;
+        // Assume one closest to other two is B; A and C will just be guesses at first
+        if (oneTwoDistance >= zeroOneDistance && oneTwoDistance >= zeroTwoDistance) {
+            pointB = patterns[0];
+            pointA = patterns[1];
+            pointC = patterns[2];
+        }
+        else if (zeroTwoDistance >= oneTwoDistance && zeroTwoDistance >= zeroOneDistance) {
+            pointB = patterns[1];
+            pointA = patterns[0];
+            pointC = patterns[2];
+        }
+        else {
+            pointB = patterns[2];
+            pointA = patterns[0];
+            pointC = patterns[1];
+        }
+        // Use cross product to figure out whether A and C are correct or flipped.
+        // This asks whether BC x BA has a positive z component, which is the arrangement
+        // we want for A, B, C. If it's negative, then we've got it flipped around and
+        // should swap A and C.
+        if (this.crossProductZ(pointA, pointB, pointC) < 0.0) {
+            var temp = pointA;
+            pointA = pointC;
+            pointC = temp;
+        }
+        patterns[0] = pointA;
+        patterns[1] = pointB;
+        patterns[2] = pointC;
+    };
+    /**
+     * @param pattern1 first pattern
+     * @param pattern2 second pattern
+     * @return distance between two points
+     */
+    ResultPoint.distance = function (pattern1, pattern2) {
+        return MathUtils_1.default.distance(pattern1.x, pattern1.y, pattern2.x, pattern2.y);
+    };
+    /**
+     * Returns the z component of the cross product between vectors BC and BA.
+     */
+    ResultPoint.crossProductZ = function (pointA, pointB, pointC) {
+        var bX = pointB.x;
+        var bY = pointB.y;
+        return ((pointC.x - bX) * (pointA.y - bY)) - ((pointC.y - bY) * (pointA.x - bX));
+    };
+    return ResultPoint;
+}());
+exports.default = ResultPoint;
+//# sourceMappingURL=ResultPoint.js.map
 
 /***/ }),
 
-/***/ 1830:
+/***/ 1651:
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// style-loader: Adds some css to the DOM by adding a <style> tag\n\n// load the styles\nvar content = __webpack_require__(1821);\nif(typeof content === 'string') content = [[module.i, content, '']];\nif(content.locals) module.exports = content.locals;\n// add the styles to the DOM\nvar update = __webpack_require__(410)(\"49182b0e\", content, false, {});\n// Hot Module Replacement\nif(false) {\n // When the styles change, update the <style> tags\n if(!content.locals) {\n   module.hot.accept(\"!!../../node_modules/css-loader/index.js?sourceMap!../../node_modules/vue-loader/lib/style-compiler/index.js?{\\\"vue\\\":true,\\\"id\\\":\\\"data-v-2a3db0ac\\\",\\\"scoped\\\":false,\\\"hasInlineConfig\\\":false}!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Home.vue\", function() {\n     var newContent = require(\"!!../../node_modules/css-loader/index.js?sourceMap!../../node_modules/vue-loader/lib/style-compiler/index.js?{\\\"vue\\\":true,\\\"id\\\":\\\"data-v-2a3db0ac\\\",\\\"scoped\\\":false,\\\"hasInlineConfig\\\":false}!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Home.vue\");\n     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];\n     update(newContent);\n   });\n }\n // When the module is disposed, remove the <style> tags\n module.hot.dispose(function() { update(); });\n}\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvY29tcG9uZW50cy9Ib21lLnZ1ZT84MWNiIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0Esc0NBQXdOO0FBQ3hOO0FBQ0E7QUFDQTtBQUNBLG9FQUEwSTtBQUMxSTtBQUNBO0FBQ0E7QUFDQTtBQUNBLG9JQUFvSSxtRkFBbUY7QUFDdk4sNklBQTZJLG1GQUFtRjtBQUNoTztBQUNBO0FBQ0EsSUFBSTtBQUNKO0FBQ0E7QUFDQSxnQ0FBZ0MsVUFBVSxFQUFFO0FBQzVDIiwiZmlsZSI6IjE4MzAuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvLyBzdHlsZS1sb2FkZXI6IEFkZHMgc29tZSBjc3MgdG8gdGhlIERPTSBieSBhZGRpbmcgYSA8c3R5bGU+IHRhZ1xuXG4vLyBsb2FkIHRoZSBzdHlsZXNcbnZhciBjb250ZW50ID0gcmVxdWlyZShcIiEhLi4vLi4vbm9kZV9tb2R1bGVzL2Nzcy1sb2FkZXIvaW5kZXguanM/c291cmNlTWFwIS4uLy4uL25vZGVfbW9kdWxlcy92dWUtbG9hZGVyL2xpYi9zdHlsZS1jb21waWxlci9pbmRleC5qcz97XFxcInZ1ZVxcXCI6dHJ1ZSxcXFwiaWRcXFwiOlxcXCJkYXRhLXYtMmEzZGIwYWNcXFwiLFxcXCJzY29wZWRcXFwiOmZhbHNlLFxcXCJoYXNJbmxpbmVDb25maWdcXFwiOmZhbHNlfSEuLi8uLi9ub2RlX21vZHVsZXMvdnVlLWxvYWRlci9saWIvc2VsZWN0b3IuanM/dHlwZT1zdHlsZXMmaW5kZXg9MCEuL0hvbWUudnVlXCIpO1xuaWYodHlwZW9mIGNvbnRlbnQgPT09ICdzdHJpbmcnKSBjb250ZW50ID0gW1ttb2R1bGUuaWQsIGNvbnRlbnQsICcnXV07XG5pZihjb250ZW50LmxvY2FscykgbW9kdWxlLmV4cG9ydHMgPSBjb250ZW50LmxvY2Fscztcbi8vIGFkZCB0aGUgc3R5bGVzIHRvIHRoZSBET01cbnZhciB1cGRhdGUgPSByZXF1aXJlKFwiIS4uLy4uL25vZGVfbW9kdWxlcy92dWUtbG9hZGVyL25vZGVfbW9kdWxlcy92dWUtc3R5bGUtbG9hZGVyL2xpYi9hZGRTdHlsZXNDbGllbnQuanNcIikoXCI0OTE4MmIwZVwiLCBjb250ZW50LCBmYWxzZSwge30pO1xuLy8gSG90IE1vZHVsZSBSZXBsYWNlbWVudFxuaWYobW9kdWxlLmhvdCkge1xuIC8vIFdoZW4gdGhlIHN0eWxlcyBjaGFuZ2UsIHVwZGF0ZSB0aGUgPHN0eWxlPiB0YWdzXG4gaWYoIWNvbnRlbnQubG9jYWxzKSB7XG4gICBtb2R1bGUuaG90LmFjY2VwdChcIiEhLi4vLi4vbm9kZV9tb2R1bGVzL2Nzcy1sb2FkZXIvaW5kZXguanM/c291cmNlTWFwIS4uLy4uL25vZGVfbW9kdWxlcy92dWUtbG9hZGVyL2xpYi9zdHlsZS1jb21waWxlci9pbmRleC5qcz97XFxcInZ1ZVxcXCI6dHJ1ZSxcXFwiaWRcXFwiOlxcXCJkYXRhLXYtMmEzZGIwYWNcXFwiLFxcXCJzY29wZWRcXFwiOmZhbHNlLFxcXCJoYXNJbmxpbmVDb25maWdcXFwiOmZhbHNlfSEuLi8uLi9ub2RlX21vZHVsZXMvdnVlLWxvYWRlci9saWIvc2VsZWN0b3IuanM/dHlwZT1zdHlsZXMmaW5kZXg9MCEuL0hvbWUudnVlXCIsIGZ1bmN0aW9uKCkge1xuICAgICB2YXIgbmV3Q29udGVudCA9IHJlcXVpcmUoXCIhIS4uLy4uL25vZGVfbW9kdWxlcy9jc3MtbG9hZGVyL2luZGV4LmpzP3NvdXJjZU1hcCEuLi8uLi9ub2RlX21vZHVsZXMvdnVlLWxvYWRlci9saWIvc3R5bGUtY29tcGlsZXIvaW5kZXguanM/e1xcXCJ2dWVcXFwiOnRydWUsXFxcImlkXFxcIjpcXFwiZGF0YS12LTJhM2RiMGFjXFxcIixcXFwic2NvcGVkXFxcIjpmYWxzZSxcXFwiaGFzSW5saW5lQ29uZmlnXFxcIjpmYWxzZX0hLi4vLi4vbm9kZV9tb2R1bGVzL3Z1ZS1sb2FkZXIvbGliL3NlbGVjdG9yLmpzP3R5cGU9c3R5bGVzJmluZGV4PTAhLi9Ib21lLnZ1ZVwiKTtcbiAgICAgaWYodHlwZW9mIG5ld0NvbnRlbnQgPT09ICdzdHJpbmcnKSBuZXdDb250ZW50ID0gW1ttb2R1bGUuaWQsIG5ld0NvbnRlbnQsICcnXV07XG4gICAgIHVwZGF0ZShuZXdDb250ZW50KTtcbiAgIH0pO1xuIH1cbiAvLyBXaGVuIHRoZSBtb2R1bGUgaXMgZGlzcG9zZWQsIHJlbW92ZSB0aGUgPHN0eWxlPiB0YWdzXG4gbW9kdWxlLmhvdC5kaXNwb3NlKGZ1bmN0aW9uKCkgeyB1cGRhdGUoKTsgfSk7XG59XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gLi9+L3Z1ZS1sb2FkZXIvfi92dWUtc3R5bGUtbG9hZGVyIS4vfi9jc3MtbG9hZGVyP3NvdXJjZU1hcCEuL34vdnVlLWxvYWRlci9saWIvc3R5bGUtY29tcGlsZXI/e1widnVlXCI6dHJ1ZSxcImlkXCI6XCJkYXRhLXYtMmEzZGIwYWNcIixcInNjb3BlZFwiOmZhbHNlLFwiaGFzSW5saW5lQ29uZmlnXCI6ZmFsc2V9IS4vfi92dWUtbG9hZGVyL2xpYi9zZWxlY3Rvci5qcz90eXBlPXN0eWxlcyZpbmRleD0wIS4vc3JjL2NvbXBvbmVudHMvSG9tZS52dWVcbi8vIG1vZHVsZSBpZCA9IDE4MzBcbi8vIG1vZHVsZSBjaHVua3MgPSAyIl0sInNvdXJjZVJvb3QiOiIifQ==");
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var ts_custom_error_1 = __webpack_require__(1758);
+/**
+ * Custom Error class of type Exception.
+ */
+var Exception = /** @class */ (function (_super) {
+    __extends(Exception, _super);
+    /**
+     * Allows Exception to be constructed directly
+     * with some message and prototype definition.
+     */
+    function Exception(message) {
+        if (message === void 0) { message = undefined; }
+        var _this = _super.call(this, message) || this;
+        _this.message = message;
+        return _this;
+    }
+    return Exception;
+}(ts_custom_error_1.CustomError));
+exports.default = Exception;
+//# sourceMappingURL=Exception.js.map
 
 /***/ }),
 
@@ -18668,223 +18879,3 @@ var update = __webpack_require__(663)("7aef176c", content, true, {});
 
 });
 //# sourceMappingURL=2.build.js.map
-function injectStyle (ssrContext) {
-  __webpack_require__(1779)
-}
-var Component = __webpack_require__(662)(
-  /* script */
-  __webpack_require__(1763),
-  /* template */
-  __webpack_require__(1772),
-  /* styles */
-  injectStyle,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var Exception_1 = __webpack_require__(1651);
-/**
- * Custom Error class of type Exception.
- */
-var IllegalArgumentException = /** @class */ (function (_super) {
-    __extends(IllegalArgumentException, _super);
-    function IllegalArgumentException() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    return IllegalArgumentException;
-}(Exception_1.default));
-exports.default = IllegalArgumentException;
-//# sourceMappingURL=IllegalArgumentException.js.map
-/***/ 1649:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var Exception_1 = __webpack_require__(1651);
-/**
- * Custom Error class of type Exception.
- */
-var NotFoundException = /** @class */ (function (_super) {
-    __extends(NotFoundException, _super);
-    function NotFoundException() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    return NotFoundException;
-}(Exception_1.default));
-exports.default = NotFoundException;
-//# sourceMappingURL=NotFoundException.js.map
-/***/ 1650:
-"use strict";
-
-/*
- * Copyright 2007 ZXing authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-Object.defineProperty(exports, "__esModule", { value: true });
-/*namespace com.google.zxing {*/
-var MathUtils_1 = __webpack_require__(1667);
-var Float_1 = __webpack_require__(1747);
-/**
- * <p>Encapsulates a point of interest in an image containing a barcode. Typically, this
- * would be the location of a finder pattern or the corner of the barcode, for example.</p>
- *
- * @author Sean Owen
- */
-var ResultPoint = /** @class */ (function () {
-    function ResultPoint(x /*float*/, y /*float*/) {
-        this.x = x;
-        this.y = y;
-    }
-    ResultPoint.prototype.getX = function () {
-        return this.x;
-    };
-    ResultPoint.prototype.getY = function () {
-        return this.y;
-    };
-    /*@Override*/
-    ResultPoint.prototype.equals = function (other) {
-        if (other instanceof ResultPoint) {
-            var otherPoint = other;
-            return this.x === otherPoint.x && this.y === otherPoint.y;
-        }
-        return false;
-    };
-    /*@Override*/
-    ResultPoint.prototype.hashCode = function () {
-        return 31 * Float_1.default.floatToIntBits(this.x) + Float_1.default.floatToIntBits(this.y);
-    };
-    /*@Override*/
-    ResultPoint.prototype.toString = function () {
-        return '(' + this.x + ',' + this.y + ')';
-    };
-    /**
-     * Orders an array of three ResultPoints in an order [A,B,C] such that AB is less than AC
-     * and BC is less than AC, and the angle between BC and BA is less than 180 degrees.
-     *
-     * @param patterns array of three {@code ResultPoint} to order
-     */
-    ResultPoint.orderBestPatterns = function (patterns) {
-        // Find distances between pattern centers
-        var zeroOneDistance = this.distance(patterns[0], patterns[1]);
-        var oneTwoDistance = this.distance(patterns[1], patterns[2]);
-        var zeroTwoDistance = this.distance(patterns[0], patterns[2]);
-        var pointA;
-        var pointB;
-        var pointC;
-        // Assume one closest to other two is B; A and C will just be guesses at first
-        if (oneTwoDistance >= zeroOneDistance && oneTwoDistance >= zeroTwoDistance) {
-            pointB = patterns[0];
-            pointA = patterns[1];
-            pointC = patterns[2];
-        }
-        else if (zeroTwoDistance >= oneTwoDistance && zeroTwoDistance >= zeroOneDistance) {
-            pointB = patterns[1];
-            pointA = patterns[0];
-            pointC = patterns[2];
-        }
-        else {
-            pointB = patterns[2];
-            pointA = patterns[0];
-            pointC = patterns[1];
-        }
-        // Use cross product to figure out whether A and C are correct or flipped.
-        // This asks whether BC x BA has a positive z component, which is the arrangement
-        // we want for A, B, C. If it's negative, then we've got it flipped around and
-        // should swap A and C.
-        if (this.crossProductZ(pointA, pointB, pointC) < 0.0) {
-            var temp = pointA;
-            pointA = pointC;
-            pointC = temp;
-        }
-        patterns[0] = pointA;
-        patterns[1] = pointB;
-        patterns[2] = pointC;
-    };
-    /**
-     * @param pattern1 first pattern
-     * @param pattern2 second pattern
-     * @return distance between two points
-     */
-    ResultPoint.distance = function (pattern1, pattern2) {
-        return MathUtils_1.default.distance(pattern1.x, pattern1.y, pattern2.x, pattern2.y);
-    };
-    /**
-     * Returns the z component of the cross product between vectors BC and BA.
-     */
-    ResultPoint.crossProductZ = function (pointA, pointB, pointC) {
-        var bX = pointB.x;
-        var bY = pointB.y;
-        return ((pointC.x - bX) * (pointA.y - bY)) - ((pointC.y - bY) * (pointA.x - bX));
-    };
-    return ResultPoint;
-}());
-exports.default = ResultPoint;
-//# sourceMappingURL=ResultPoint.js.map
-/***/ 1651:
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var ts_custom_error_1 = __webpack_require__(1758);
-/**
- * Custom Error class of type Exception.
- */
-var Exception = /** @class */ (function (_super) {
-    __extends(Exception, _super);
-    /**
-     * Allows Exception to be constructed directly
-     * with some message and prototype definition.
-     */
-    function Exception(message) {
-        if (message === void 0) { message = undefined; }
-        var _this = _super.call(this, message) || this;
-        _this.message = message;
-        return _this;
-    }
-    return Exception;
-}(ts_custom_error_1.CustomError));
-exports.default = Exception;
-//# sourceMappingURL=Exception.js.map
