@@ -3,6 +3,7 @@ import * as IPFS from 'ipfs';
 import {DefaultIpfs} from '../ipfs';
 let Key = require('interface-datastore').Key;
 let Keystore = require('orbit-db-keystore');
+import {OrbitFS} from './fs';
 
 class DataStore {
   constructor(public datastore:any){
@@ -32,6 +33,8 @@ export class Account {
   db: any;
   ipfs: IPFS;
   _dataStore: DataStore;
+  name = '';
+  petitions: any[] = [];
 
 
   constructor(ipfs: IPFS, options?: any) {
@@ -45,14 +48,6 @@ export class Account {
   }
 
   static async create(ipfs: IPFS, options?:any) {
-  //let repo = (ipfs as any)._repo;
-      //let datastore = repo.datastore;
-      //if (repo.closed) {
-      //await datastore.open()
-	//}
-      //if (await datastore.has('account')) {
-      // options = Object.assign(options, {peerId: await datastore.get('account')});
-      //}
       return new Account(ipfs, options);
   }
 
@@ -72,16 +67,17 @@ export class Account {
   }
 
   async saveAccount(){
-    await this.storage.put('account', this.orbitdb.id)
+    await this.storage.put('account', this.orbitdb.id);
   }
 
   async fromStorage(){
-    return this.storage.get('account')
+    return this.storage.get('account');
   }
 
   async accountDB(){
     if (!this.db){
-      this.db = this.orbitdb.keyvalue('OpenSourceDemocracy', {sync:true, write:["*"]});
+      this.db = await this.orbitdb.keyvalue('OpenSourceDemocracy',
+      {sync:true, write:["*"]});
       await this.db.load();
     }
     return this.db;
@@ -91,41 +87,25 @@ export class Account {
     let db = await this.accountDB();
     let encryptedKey = db.get(email);
     this.importAccount(encryptedKey, password);
-    this.orbitdb = new OrbitDB(this.ipfs, this.DBdirectory, {peerId: encryptedKey.id, keystore: this.orbitdb.keystore});
+    this.orbitdb = new OrbitDB(this.ipfs, this.DBdirectory,
+      {peerId: encryptedKey.id, keystore: this.orbitdb.keystore});
     this.saveAccount();
   }
-  //
-  // async createAccountDB() {
-  //   this.db = await this.orbitdb.open(this.accountDBName, { sync: true})
-  //   this.db.events.on('load', (dbname: string) => console.log('loading '+ dbname))
-  //   this.db.events.on('replicate.progress', (address: string, hash: string, entry: string, progress: string, have: string)=>{
-  //       console.log(address +' "+hash+" "+entry+" "+progress+" '+ have)
-  //   })
-  //   await this.db.load()
-  //   // this.worker = new Worker('js/actor.js')
-  //   // this.worker.postMessage('In worker' + this.db.address.toString())
-  //   console.log('accountDB loaded '+ this.db.address.toString())
-  // }
-  //
-  //
-  // async createAccount(email: string, password: string) {
-  //
-  // }
 
   get key() {
-    return this.orbitdb.key
+    return this.orbitdb.key;
   }
 
   get keystore(){
-    return this.orbitdb.keystore
+    return this.orbitdb.keystore;
   }
 
   get id() {
-    return this.orbitdb.id
+    return this.orbitdb.id;
   }
 
   get publicKey() {
-    return this.key.getPublic('hex')
+    return this.key.getPublic('hex');
   }
 
   async exportAccount(password: string){
@@ -133,92 +113,30 @@ export class Account {
   }
 
   async importAccount(exportedKey: any, password: string){
-    this.keystore.importKey(exportedKey, password);
+    try {
+      exportedKey.salt = exportedKey.salt.data;
+      exportedKey.IV = exportedKey.IV.data;
+      exportedKey.data = exportedKey.data.data;
+    await this.keystore.importKey(exportedKey, password);
+    this.orbitdb = new OrbitDB(this.ipfs, this.DBdirectory,
+      {peerId: exportedKey.id, keystore: this.orbitdb.keystore});
+    await this.saveAccount();
+  } catch(err){
+      console.log(err);
   }
-  //
-  // sign(data) {
-  //   return this.keystore.sign(this.key, data)
-  // }
-  //
-  // verify(signature, key, data){
-  //   return this.keystore.verify(signature, key, data)
-  // }
-  // async encryptAccountOptions(password) {
-  //   const toEncrypt = JSON.stringify({keystore:this.orbitdb.keystore._storage, peerId :this.orbitdb.id})
-  //   console.log(toEncrypt);
-  //   return encryptText(toEncrypt,password)
-  // }
-  // async decryptAccountOptions(cipherText, password) {
-  //   return JSON.parse(await decryptText(cipherText.encBuffer, cipherText.iv,password))
-  // }
-  //
-  // async login(email, password){
-  //   if (this.loggedin){
-  //     console.log('already logged in')
-  //   }else{
-  //     var oldId = this.orbitdb.id
-  //     var options = await this.lookupAccount(email, password)
-  //     if (!options){
-  //       return
-  //     }
-  //     this.orbitdb.id = options['peerId']
-  //     this.orbitdb.keystore._storage[this.orbitdb.id] = options['keystore'][this.orbitdb.id]
-  //     this.orbitdb = new OrbitDB(this.orbitdb._ipfs,this.orbitdb.directory, {peerId: this.orbitdb.id, keystore:this.orbitdb.keystore})
-  //     console.log('old id "+ oldId + " new id: ' + options.peerId)
-  //     this.saveAccount()
-  //     console.log(this.loggedin ? 'logged in!": "login Failed :-(')
-  //   }
-  //   await this.initFS()
-  //
-  // }
-  //
-  // async initFS(){
-  //
-  // }
-  //
-  // logout(){
-  //   this.storage.removeItem('account')
-  // }
-  //
-  // connectedPeers() {
-  //   return this.ipfs.pubsub.peers(db.address.toString())
-  // }
+  }
 
-  // async newContactCard() {
-  //   if (this.tempDB)
-  //     return this.card
-  //   this.tempDB = new EventLog(await this.orbitdb.eventlog(randomNonce(8)+'',
-  //                             {create:true, overwrite:true, write:['*']}))
-  //   var nonce = randomNonce(8)
-  //   var card = {nonce:nonce,
-  //               dbAddr: this.tempDB.address,
-  //               publicKey:this.publicKey,//this.key.pub,
-  //               peerID:this.id
-  //   }
-  //   self.card = card
-  //   var db = this.tempDB
-  //   await db.load()
-  //   this.tempDB.events.on('replicate', ()=>
-  //    {
-  //     db.load().then(()=>{
-  //       var message = db.peek()
-  //       if (message.msg.nonce === nonce){
-  //         this.addContact({peerID: message.peerID,
-  //                     publicKey: message.publicKey,
-  //                     channel: message.msg.channel})
-  //         db.destroy()
-  //         this.tempDB = null
-  //         this.card = null
-  //       }
-  //       else{
-  //         console.log('NONCE IS NOT CORRECT')
-  //       }
-  //     })
-  //    // })
-  //   })
-  //
-  //   return card
-  // }
+  async getPrivateFS(key: string){
+    return OrbitFS.create(this.orbitdb, "ROOT", [key]);
+  }
+
+  sign(data) {
+    return this.keystore.sign(this.key, data);
+  }
+
+  verify(signature, key, data){
+    return this.keystore.verify(signature, key, data);
+  }
 }
 
 async function test(){
